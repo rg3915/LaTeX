@@ -1,0 +1,22 @@
+% The tkz-euclide package
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+\usetikzlibrary{arrows}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \tkzInit
+    \tkzPoint[color=blue,pos=below left](0,0){A}
+    \tkzPoint[color=blue,pos=below right](2,0){B}
+    \tkzPoint[color=blue,pos=above left](0,3){C}
+    \tkzDrawSegments(A,B B,C A,C)
+    \tkzMarkRightAngle(B,A,C)
+\end{tikzpicture}
+
+\end{document}
