@@ -1,0 +1,8 @@
+mkvirtualenv pelican
+pip install pelican markdown
+# criar pasta
+mkdir -p ~/projects/yoursite
+cd ~/projects/yoursite
+pelican-quickstart
+touch content/teste.md
+./develop_server.sh start
