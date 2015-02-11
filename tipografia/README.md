@@ -1,3 +1,5 @@
+	Este readme está totalmente desorganizado e incompleto...
+
 # Tipografia (Fontes)
 
 [Tipografia](http://pt.wikipedia.org/wiki/Tipografia) é a essência do [LaTeX](http://latexbr.blogspot.com/2010/04/introducao-ao-latex.html). Tipografia trata essencial de fontes e seus estilos, então veremos aqui um estudo completo sobre o uso de fontes no LaTeX. A escolha de uma fonte requer 4 características essenciais: família (family), série (serie), forma (shape) e tamanho (size). A seguir, veremos cada um deles.
