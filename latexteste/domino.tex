@@ -1,0 +1,10 @@
+\documentclass{minimal}
+\usepackage{pstricks,pst-solides3d}
+
+\begin{document}
+	\begin{pspicture}(-5,-5)(5,5)
+		\psset{Alpha=30,Beta=30}
+		\pstThreeDCoor[xMin=-3,xMax=1,yMin=-1,yMax=2,zMin=-1,zMax=4]
+		\psBox[showInside=false](0,0,0){2}{5}{3}
+	\end{pspicture}
+\end{document}

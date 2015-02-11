@@ -1,0 +1,16 @@
+\begin{tikzpicture}[>=latex]
+%grade
+\draw [lightgray,dashed] (-1,-1) grid (5,5);
+%eixos
+\draw[->] (-1,0) -- (5,0);
+\draw[->] (0,-1) -- (0,5);
+%numeros
+\foreach \i in {1,2,3,4}{
+ \draw[shift={(\i,0)}] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $z\i$};
+ \draw[shift={(0,\i)}] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $z\i$};
+}
+%legendas
+\draw (0,0) node[below left] {\footnotesize $0$};
+\draw (5,0) node[below] {\footnotesize $x$};
+\draw (0,5) node[left] {\footnotesize $y$};
+\end{tikzpicture}

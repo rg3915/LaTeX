@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{fontspec}
+\setmainfont{xkcd}
+
+\begin{document}
+
+\begin{tikzpicture}[decoration={random steps,segment length=1mm,amplitude=0.2pt},thick]
+
+\begin{scope}
+	\draw[decorate] (0,0) rectangle ++(5,3.5);
+	\draw[decorate] (0,3.1) -- ++(5,0);
+	\node[right] at (0,3.3) {Equipe};
+	\node[right] at (1.2,3.3) {Rodada};
+	\node[right] at (2.4,3.3) {Placar};
+
+	\draw[decorate] (.2,.6) rectangle ++(4.6,2.3);
+	\draw[decorate] (.2,2.5) -- ++(4.6,0);
+	\draw[decorate] (3.3,.6) -- ++(0,2.3);
+	\node[right] at (.2,2.7) {Time};
+	\node[left] at (4.6,2.7) {Pontos};
+
+	\draw[decorate] (3.5,.1) rectangle node {Fechar} ++(1.3,.4);
+
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

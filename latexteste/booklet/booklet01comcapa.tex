@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://latexbr.blogspot.com.br
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{ifpdf,ifxetex,everyshi}
+
+% Rotaciona as paginas impares em 180º
+\makeatletter
+\ifpdf
+   \EveryShipout{\ifodd\c@page\pdfpageattr{/Rotate 180}\fi}%
+\fi
+\ifxetex
+  \EveryShipout{\ifodd\c@page\special{pdf: put @thispage << /Rotate 180 >>}%
+\fi
+}
+\fi
+\makeatother
+
+\begin{document}
+
+\includepdfmerge[nup=1x2,booklet=true]{
+	capa-samplebookdesign.pdf, 1,
+	2e3capas.pdf, 1,
+	pages12.pdf, -,
+	2e3capas.pdf, 2,
+	capa-samplebookdesign.pdf, 2}
+
+\end{document}

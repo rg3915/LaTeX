@@ -1,0 +1,233 @@
+\documentclass[a4paper,svgnames]{book}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{wallpaper}
+\usepackage{changepage}
+\usepackage[explicit,clearempty]{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{wasysym}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning}
+\usepackage[lmargin=2.5cm,rmargin=2.5cm,tmargin=3cm,bmargin=2cm]{geometry}
+\graphicspath{{capa/}}
+
+%Definição de novas cores.
+\definecolor{verdeEscuro}{rgb}{0.098,0.482,0.188}
+\definecolor{verdeClaro}{rgb}{0.82,1,0}
+
+%% Command to hold chapter illustration image
+\newcommand\chapterillustration{}
+
+%% Define how the chapter title is printed
+\titleformat{\chapter}{}{}{0pt}{
+%% Background image at top of page
+\ThisULCornerWallPaper{1}{\chapterillustration}
+%% Draw a semi-transparent rectangle across the top
+\tikz[overlay,remember picture]
+  \fill[LightGreen,opacity=.7]
+  (current page.north west) rectangle
+  ([yshift=-3cm] current page.north east);
+  %% Check if on an odd or even page
+  \strictpagecheck\checkoddpage
+  %% On odd pages, "logo" image at lower right corner;
+  \ifoddpage{
+    \begin{tikzpicture}[overlay,remember picture]
+    \node[anchor=south west,
+      xshift=20mm,yshift=-30mm,
+      font=\sffamily\bfseries\huge]
+      at (current page.north west)
+      {\chaptername\ \thechapter};
+    \node[text=white,
+      font=\Huge\bfseries,
+      inner ysep=12pt, inner xsep=20pt,
+      anchor=west,
+      xshift=-15mm,yshift=-40mm]
+      at (current page.north west) {#1};
+    \end{tikzpicture}
+  }
+  %% On even pages, "logo" image at lower left corner;
+  \else {
+    \begin{tikzpicture}[overlay,remember picture]
+    \node[anchor=south east,
+      xshift=-20mm,yshift=-30mm,
+      font=\sffamily\bfseries\huge]
+      at (current page.north east)
+      {\chaptername\ \thechapter};
+    \node[text=white,
+      font=\Huge\bfseries,
+      inner sep=12pt, inner xsep=20pt,
+      anchor=east,
+      xshift=-15mm,yshift=-40mm]
+      at ( current page.north east) {#1};
+    \end{tikzpicture}
+  }
+  \fi
+}
+%% Sumário
+%% Define how the chapter title is printed
+\titleformat{name=\chapter,numberless}{}{}{0pt}{
+%% Draw a semi-transparent rectangle across the top
+\tikz[overlay,remember picture]
+  \fill[LightGreen,opacity=.7]
+  (current page.north west) rectangle
+  ([yshift=-3cm] current page.north east);
+  %% Check if on an odd or even page
+  \strictpagecheck\checkoddpage
+  %% On odd pages, "logo" image at lower right corner;
+  \ifoddpage{
+    \begin{tikzpicture}[overlay,remember picture]
+    \node[fill=verdeEscuro,text=white,
+      font=\Huge\bfseries,
+      inner ysep=12pt, inner xsep=20pt,
+      rounded rectangle,anchor=east,
+      xshift=-20mm,yshift=-30mm]
+      at (current page.north east) {#1};
+    \end{tikzpicture}
+  }
+  %% On even pages, "logo" image at lower left corner;
+  \else {
+    \begin{tikzpicture}[overlay,remember picture]
+    \node[fill=verdeEscuro,text=white,
+      font=\Huge\bfseries,
+      inner sep=12pt, inner xsep=20pt,
+      rounded rectangle,anchor=west,
+      xshift=20mm,yshift=-30mm]
+      at ( current page.north west) {#1};
+    \end{tikzpicture}
+  }
+  \fi
+}
+\titlespacing*{\chapter}{0pt}{0pt}{60mm}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{50mm}
+
+%% Set the uniform width of the colour box
+%% displaying the page number in footer
+%% to the width of "99"
+\newlength\pagenumwidth
+\settowidth{\pagenumwidth}{99}
+
+%% Define style of page number colour box
+\tikzset{pagefooter/.style={
+anchor=base,font=\sffamily\bfseries\small,
+text=white,fill=verdeEscuro,text centered,
+text depth=17mm,text width=\pagenumwidth}}
+
+%% Concoct some colours of our own
+\definecolor[named]{GreenTea}{HTML}{CAE8A2}
+%\definecolor[named]{MilkTea}{HTML}{C5A16F}
+
+%%%%%%%%%%
+%%% Redefinindo cabeçalho
+%%%%%%%%%%
+%evenside - lado par
+%oddside - lado impar
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancypagestyle{headings}{%
+  \fancyhf{}   % Clear all headers and footers first
+  %% Right headers on odd pages
+  \fancyhead[RO]{%
+    %% Then the decorative line and the right mark
+    \begin{tikzpicture}[xshift=-.75\baselineskip,yshift=.25\baselineskip,remember picture,overlay,fill=GreenTea,draw=GreenTea]
+    \fill circle(3pt);
+    \draw[semithick](0,0) -- (current page.west |- 0,0);
+    \end{tikzpicture}
+    \sffamily\itshape\small\nouppercase{\leftmark} %%capítulo
+  }
+
+  %% Left headers on even pages
+  \fancyhead[LE]{%
+    %% Then the right mark and the decorative line
+    \sffamily\itshape\small\nouppercase{\leftmark}\
+    \begin{tikzpicture}[xshift=.5\baselineskip,yshift=.25\baselineskip,remember picture, overlay,fill=GreenTea,draw=GreenTea]
+    \fill (0,0) circle (3pt);
+    \draw[semithick](0,0) -- (current page.east |- 0,0 );
+    \end{tikzpicture}
+  }
+
+  %% Right footers on odd pages and left footers on even pages,
+  %% display the page number in a colour box
+  \fancyfoot[RO,LE]{\tikz[baseline]\node[pagefooter]{\thepage};}
+  \fancyfoot[LO,RE]{Régis {\color{blue} \smiley} 2010}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+%%%%%%%%%%
+%%% Redefinindo rodapé do sumario
+%%%%%%%%%%
+\fancypagestyle{plain}{%
+  %% Clear all headers and footers
+  \fancyhf{}
+  %% Right footers on odd pages and left footers on even pages,
+  %% display the page number in a colour box
+  \fancyfoot[RO,LE]{\tikz[baseline]\node[pagefooter]{\thepage};}
+%  \fancyfoot[LO,RE]{Régis {\color{blue} \smiley} 2010}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\begin{document}
+
+%%%%%%%%%%%%%%
+%% Capa
+%%%%%%%%%%%%%%
+
+%% No header nor footer on the cover
+\thispagestyle{empty}
+
+%% Cover illustration
+\ThisLLCornerWallPaper{1}{capa02}
+
+%% Título da capa
+\tikz[remember picture,overlay,anchor=current page.north west,shift={(6.5,-6.2)}]{
+\fill[verdeEscuro] (0,0) rectangle (2,-2);
+\fill[yellow] (0,-2) rectangle (2,-4);
+\fill[verdeClaro] (0,-4) rectangle (2,-6);
+\node[text=DarkOrange,anchor=west]%
+  at (.5,-1){\bfseries\itshape\color{orange}\fontsize{36pt}{46pt}\selectfont
+    Probabilidade};
+\node[text=DarkOrange,anchor=west]%
+  at (.5,-3){\bfseries\itshape\color{orange}\fontsize{36pt}{46pt}\selectfont
+    \&};
+\node[text=DarkOrange,anchor=west]%
+  at (.5,-5){\bfseries\itshape\color{orange}\fontsize{36pt}{46pt}\selectfont
+    Estatística};
+}
+
+%% Rodapé da capa
+\tikz[remember picture,overlay,node distance=0mm,font=\LARGE,text=OrangeRed]{
+\node[yshift=2cm] (n1)
+ at (current page.south) {Régis da Silva Santos};
+\node [below = of n1] {UFMT 2010};
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\pagestyle{headings}
+
+\renewcommand\chapterillustration{header01}
+\chapter{Probabilidade}
+\section{Um}
+\lipsum[1-7]
+
+\section{Dois}
+\lipsum[8-11]
+
+\section{Três}
+\lipsum[12-20]
+
+
+\renewcommand\chapterillustration{header02}
+\chapter{Estatística}
+\lipsum[5-6]
+
+\section{Um}
+\lipsum[7-10]
+
+\section{Dois}
+\lipsum[11-36]
+
+
+\end{document} 

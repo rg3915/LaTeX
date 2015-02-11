@@ -1,0 +1,189 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{graphics,amssymb,amsfonts,amsmath}
+\usepackage{tikz}
+\DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{pgfpages,enumerate,hyperref}
+\usepackage{palatino}   %Fonte sem serifa.
+\usepackage{ragged2e}   %Parágrafo justificado.
+\usetheme{AnnArbor}     %Alguns temas aceitam seção, outros não.
+\usecolortheme{orchid}
+\usefonttheme[onlymath]{serif}
+%\usetheme{CambridgeUS}
+%\usetheme{Berkeley}
+%\usetheme{Madrid}
+%\usecolortheme{dolphin}
+%\usetheme{Malmoe}
+%\usecolortheme{lily}
+%\usecolortheme{whale}
+
+%colocando número de páginas no slide.
+\setbeamertemplate{footline}[frame number]
+
+% desativando os botoes de navegacao.
+\beamertemplatenavigationsymbolsempty
+
+%Tela cheia
+\hypersetup{pdfpagemode=FullScreen}
+
+% Layout da página: Duas colunas.
+\hypersetup{pdfpagelayout=SinglePage}
+
+%Definição de novos ambientes.
+\theoremstyle{Definition}
+\newtheorem{defn}{Definição}
+\newtheorem{teo}[theorem]{Teorema}
+\newtheorem{ex}[theorem]{Exemplo}
+
+%Definição de novos comandos.
+\providecommand{\sin}{} \renewcommand{\sin}{\hspace{2pt}\textrm{sen}}
+\providecommand{\tan}{} \renewcommand{\tan}{\hspace{2pt}\textrm{tg}}
+\newcommand{\R}{\mathbb{R}}
+
+\title[\sc{Texto no rodapé}]{Modelo do Beamer Wide Screen}
+\author[Régis da Silva Santos]{Régis da Silva Santos}
+\institute{UFMT}
+\date{\today}
+
+\begin{document}
+\justifying %Parágrafo justificado.
+
+\begin{frame}
+%Tela de apresentação com plano de fundo personalizado.
+\begin{tikzpicture}[remember picture,overlay]
+    \node at (current page.south west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \fill[shading=radial,top color=orange,bottom color=orange,middle color=yellow]
+          (0,0) rectangle (\paperwidth,\paperheight);
+      \end{tikzpicture}
+      };
+\end{tikzpicture}
+\titlepage
+\end{frame}
+
+%Neste caso insere somente no primeiro slide.
+{%
+%\usebackgroundtemplate{\centering \includegraphics[width=\paperwidth]{figBackground}}
+
+%Centralizado
+\usebackgroundtemplate{%
+\vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=\paperwidth]{figuras/djangoPython}\hfil}\vfil}
+}
+
+  \begin{frame}
+
+    \begin{center}
+      \Huge{Figura como plano de fundo}
+    \end{center}
+  \end{frame}
+}
+
+\begin{frame}[fragile]\frametitle{Expressões Matemáticas}
+
+%Paragrafo.
+\setlength{\parindent}{2em}
+
+Seja $f:\R \to \R$ tal que $y=\sqrt{x}$.
+
+Este texto está justificado \footnote{Nota de rodapé.} e com uma margem definida pelo comando
+
+\begin{verbatim}
+\setlength{\parindent}{2em}
+\end{verbatim}
+
+Exemplo de uma equação matemática centralizada.
+
+\[
+\sin^2 x + \cos^2 x = 1
+\]
+
+\end{frame}
+
+\begin{frame}\frametitle{Links}
+
+\begin{center}
+www.google.com
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Exemplo e código}
+\begin{block}{Exemplo}
+Texto
+\end{block}
+
+\begin{exampleblock}{Solução}
+
+\begin{verbatim}
+\documentclass{beamer}
+\usepackage{graphics,amssymb,amsfonts,amsmath}
+\DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{pgfpages,enumerate,hyperref,tikz}
+\usepackage{palatino}   %Fonte sem serifa.
+\usepackage{ragged2e}   %Parágrafo justificado.
+\end{verbatim}
+
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}\frametitle{Novos ambientes}
+\begin{defn}
+Novo ambiente de definição.
+\end{defn}
+
+\begin{teo}
+Novo ambiente de teorema.
+\end{teo}
+\end{frame}
+
+
+\begin{frame}\frametitle{Inserindo figuras}
+
+Figuras devem ser inseridas no formato PNG ou PDF.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=0.6\paperheight]{figCoordEsf02}
+  %\includegraphics[height=6cm]{figCoordEsf02}
+  \caption{Sistema de coordenadas esféricas.}\label{figCoordEsf02}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Transições}
+
+Texto após uma pausa.
+
+\pause
+
+\begin{enumerate}[a)]
+  \item<2-> primeiro;
+  \item<3-> segundo;
+  \item<4-> terceiro.
+\end{enumerate}
+
+\end{frame}
+
+% Referencias bibliograficas
+\begin{frame}\frametitle{Bibliografia}
+\begin{thebibliography}{99}
+
+\bibitem{Guidorizzi} GUIDORIZZI, Hamilton Luiz. {\sl Um Curso de Cálculo.} Vol. 1 e 2. 5ª ed. Rio de Janeiro: LTC, 2007.
+
+\bibitem{stewart} STEWART, James. {\sl Cálculo.} Vol. 1. 5ª Ed. São Paulo: Pioneira, 2006.
+
+\bibitem{Munem} MUNEM, Mustafa A. e FOULIS, David J. {\sl Cálculo.} Vol. 1 e 2. Rio de Janeiro: LTC, 1982.
+
+\bibitem{leithold} LEITHOLD, D. Louis. {\sl O Cálculo com Geometria Analítica.} Vol. 1. São Paulo: Harbra, 1977.
+
+\bibitem{kaplan} KAPLAN, Wilfred. {\sl Cálculo Avançado.} Vol. 1. São Paulo: Edgard Blücher, 1972.
+
+\end{thebibliography}
+\end{frame}
+
+\end{document} 

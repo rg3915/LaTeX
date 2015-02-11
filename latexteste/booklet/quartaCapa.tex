@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://latexbr.blogspot.com.br
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,a4paper]{article}
+\usepackage[brazil]{babel}
+\usepackage{xcolor}
+\usepackage{lipsum}
+
+\definecolor{vinho}{rgb}{.5,.02,.02}
+
+\pagestyle{empty}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%
+%% Segunda capa
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{flushleft}
+  \begin{minipage}{.5\linewidth}
+    {\fontsize{50pt}{80pt}\selectfont
+      \color{vinho}\textbf{Segunda Capa}
+    }
+
+    \vspace*{0.7cm}
+    \lipsum[1-2] 
+  \end{minipage}
+\end{flushleft}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Terceira capa
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{flushright}
+  \begin{minipage}{.5\linewidth}
+    {\fontsize{50pt}{80pt}\selectfont
+      \color{vinho}\textbf{Terceira Capa}
+    }
+
+    \vspace*{0.7cm}
+    \lipsum[1] 
+  \end{minipage}
+\end{flushright}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Quarta capa
+%%%%%%%%%%%%%%%%%%%%%%
+
+\lipsum[1]
+
+\begin{center}
+\huge\bfseries\sffamily\color{vinho}Quarta Capa
+\end{center}
+
+\lipsum[2]
+
+\vfill
+
+\noindent
+\colorbox{vinho}{
+	\parbox[t]{1.0\linewidth}{
+		\centering
+		\vspace*{0.7cm}
+		
+		\color{orange}\textbf{\LaTeX BR \textbullet\ \texttt{http://latexbr.blogspot.com.br}}\par
+		
+		\vspace*{0.7cm}
+	}
+}
+
+\begin{center}
+	
+\end{center}
+
+\end{document}

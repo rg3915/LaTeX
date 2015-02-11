@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz-uml}
+
+\begin{document}
+
+\begin{tikzpicture} 
+	\begin{umlpackage}[x=0,y=0]{package-name} 
+	\end{umlpackage} 
+\end{tikzpicture}
+
+\begin{tikzpicture} 
+	\umlclass[x=0,y=0]{class\_name}{}{} 
+\end{tikzpicture}
+
+\begin{tikzpicture} 
+	\umlclass{Produtos}{ 
+  		+ n : int \\ \umlstatic{-- i : int} \\ \# r : const float 
+  	}{ 
+  		+ setA(i : int) : void \\ \umlvirt{\# getA() : A} 
+} 
+\end{tikzpicture}
+
+\end{document}

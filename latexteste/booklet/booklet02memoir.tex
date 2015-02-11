@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://latexbr.blogspot.com.br
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{kantlipsum}
+
+% tamanho do bloco de texto
+ \settypeblocksize{5.5in}{4in}{*}
+ \addtolength{\textheight}{\onelineskip}
+ \setlrmargins{2in}{*}{*} % margem esquerda
+ \setulmargins{3in}{*}{*} % margem superior
+ \checkandfixthelayout
+
+% booklet
+\usepackage[print,1to1]{booklet} \nofiles 
+\pagespersignature{16} % coloque multiplos de 4
+\setpdftargetpages % para impressao de pdf
+
+% reposiciona as paginas para impressao
+ \ifprintoption
+   \special{!TeXDict begin /landplus90{true}store end}
+   \special{!TeXDict begin <</Tumble true>> setpagedevice end}
+ \fi
+
+\begin{document}
+\pagenumbering{arabic}
+\pagestyle{headings}
+ 
+\chapter{Primeiro}
+ 
+\kant[1-20]
+
+\chapter{Segundo}
+ 
+\kant[1-20]
+
+\end{document}

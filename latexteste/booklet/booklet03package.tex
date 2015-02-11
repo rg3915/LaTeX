@@ -1,0 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://latexbr.blogspot.com.br
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{kantlipsum}
+
+% tamanho do bloco de texto
+\setlength{\textheight}{0.55\paperheight} \setlength{\textwidth}{0.55\paperwidth}
+\setlength{\oddsidemargin}{70pt} \setlength{\evensidemargin}{70pt}
+\setlength{\topmargin}{80pt} \setlength{\footskip}{27.5pt}
+\setlength{\headheight}{14.6pt} \setlength{\headsep}{19.9pt}
+
+% booklet
+\usepackage[print,1to1]{booklet} \nofiles 
+\pagespersignature{12} % coloque multiplos de 4
+\setlength{\pagesepwidth}{1pt} % linha de separacao da pagina
+\setpdftargetpages % para impressao de pdf
+
+% reposiciona as paginas para impressao
+ \ifprintoption
+   \special{!TeXDict begin /landplus90{true}store end}
+   \special{!TeXDict begin <</Tumble true>> setpagedevice end}
+ \fi
+
+\begin{document}
+
+\chapter{Primeiro}
+ 
+\kant[1-20]
+
+\chapter{Segundo}
+ 
+\kant[1-20]
+
+\end{document}

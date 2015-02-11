@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz-uml}
+
+\begin{document}
+
+\begin{tikzpicture} 
+	\umlclass{Produtos}{ 
+  		+ n : int \\ \umlstatic{-- i : int} \\ \# r : const float 
+  	}{ 
+  		+ setA(i : int) : void \\ \umlvirt{\# getA() : A} 
+} 
+\end{tikzpicture}
+
+\begin{tikzpicture} 
+	\umlclass[x=6,y=0]{Principal}{}{}
+	\umlclass[x=10,y=0]{ListaProdutos}{+ valores}{}
+	\umlclass[x=6,y=-4]{Pedido}{+ adicionarItens}{}
+	\umlclass[x=10,y=-4]{ItemPedido}{+ produto: Produto\\
+		+ quantidade: int}{+ ItemPedido: void\\
+			+ valorPedido: return\\
+			+ imprimir: void}
+	\umlassoc[geometry=-|-, arg1=1, mult1=n, pos1=0.1, 
+		align1=left, arg2=arg2, mult2=mult2, pos2=2.9, align2=right]{Principal}{ListaProdutos} 
+\end{tikzpicture}
+
+\end{document}

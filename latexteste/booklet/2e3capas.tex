@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% http://latexbr.blogspot.com.br
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,a4paper]{article}
+\usepackage[brazil]{babel}
+\usepackage{xcolor}
+\usepackage{lipsum}
+
+\definecolor{vinho}{rgb}{.5,.02,.02}
+
+\pagestyle{empty}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%
+%% Segunda capa
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{flushleft}
+  \begin{minipage}{.5\linewidth}
+    {\fontsize{50pt}{80pt}\selectfont
+      \color{vinho}\textbf{Segunda Capa}
+    }
+
+    \vspace*{0.7cm}
+    \lipsum[1-2] 
+  \end{minipage}
+\end{flushleft}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Terceira capa
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{flushright}
+  \begin{minipage}{.5\linewidth}
+    {\fontsize{50pt}{80pt}\selectfont
+      \color{vinho}\textbf{Terceira Capa}
+    }
+
+    \vspace*{0.7cm}
+    \lipsum[1] 
+  \end{minipage}
+\end{flushright}
+
+\end{document}

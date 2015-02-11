@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}[decoration={random steps,segment length=1mm,amplitude=0.2pt},thick]
+
+\begin{scope}
+\draw[decorate] circle (2);
+\draw[decorate] (0,-.5) rectangle ++(4,1);
+
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

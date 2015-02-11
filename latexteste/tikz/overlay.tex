@@ -1,0 +1,18 @@
+\documentclass[preview]{standalone}
+\usepackage{tikzinclude}
+
+\begin{document}
+
+\begin{tikzpicture}[inner sep=0,outer sep=0]
+    \node[anchor=south west] at (0,0) {\includetikzgraphics[vaso]{planta}};
+    \node[anchor=south west] at (1,1) {\includetikzgraphics[caule]{planta}};
+    \begin{scope}[shift={(1.39,2.03)}]
+    	\foreach \r in {0,60,...,300}{
+    		\begin{scope}[rotate=\r]
+    			\draw[fill=green] (-.1,.2) .. controls (-.5,1) and (.5,1) .. (.1,.2);
+    		\end{scope}
+    	}
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

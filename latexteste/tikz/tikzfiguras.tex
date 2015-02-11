@@ -1,0 +1,12 @@
+\begin{tikzpicture}[/tikzinclude/figure=quadrado]
+	\draw[fill=cyan] (0,0) rectangle (2,2);
+\end{tikzpicture}
+
+\begin{tikzpicture}[/tikzinclude/figure=esfera]
+	\fill[ball color=yellow](0,0) circle (1cm);
+\end{tikzpicture}
+
+\begin{tikzpicture}[rotate=90,/tikzinclude/figure=cilindro]
+	\fill[draw,left color=yellow,right color=orange,shading angle=45] (1,0) -- (1,5) to[out=90,in=90] (0,5) -- (0,0);
+	\fill[draw,left color=yellow,right color=orange,shading angle=45] (.5,0) ellipse (.5 and .25);
+\end{tikzpicture}

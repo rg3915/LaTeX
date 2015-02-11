@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usetikzlibrary{positioning,shapes.geometric}
+\usepackage{fontspec}
+\setmainfont{xkcd}
+
+\begin{document}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\begin{tikzpicture}[decoration={random steps,segment length=1mm,amplitude=0.2pt},thick]
+
+\begin{scope}[node distance=2pt]
+	%\draw[decorate] (0,0) rectangle ++(5,3.5);
+	%\draw[decorate] (0,3.1) -- ++(5,0);
+
+	% combobox
+	\node [draw,decorate] (cx1) {IDKit};
+	\node [draw,decorate, isosceles triangle, minimum width=.5pt,rotate=-90,scale=.5,right=of cx1] {};
+	% \node [draw,minimum height=1.5pt] (cx) {};
+
+	% campos
+	\node (c1) at (.2,2.7) {IDProduto};
+	\node[right=of c1] (c2) {Acab};
+	\node[right=of c2] (c3) {Compr};
+	\node[right=of c3] (c4) {Larg};
+	\node[right=of c4] (c5) {Pecas};
+
+	\begin{pgfonlayer}{background}
+		\path (c1.west |- c1.north) node (p1) {};
+		\path (c5.east |- c5.south)+(0,-2) node (p2) {};
+		\draw[decorate] (p1) rectangle (p2);
+	\end{pgfonlayer}
+
+	% botoes
+	\node[draw,decorate,below left] (b1) at (p2.south) {cancelar};
+	\node[draw,decorate,left=of b1] {inserir};
+
+
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
