@@ -1,0 +1,45 @@
+http://tex.stackexchange.com/a/22162/1940
+
+Baixe install-getnonfreefonts
+http://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+
+$sudo texlua install-getnonfreefonts
+
+ou
+
+$wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+$sudo texlua install-getnonfreefonts
+
+
+Instalando luximono
+
+sudo getnonfreefonts-sys luximono
+
+Veja a lista de fontes que podem ser instaladas.
+getnonfreefonts -l
+
+-----------------------------------------
+Installation directory: /home/regis/texmf
+-----------------------------------------
+arial-urw      Arial (URW)                                  [not installed]
+classico       Classico (URW)                               [not installed]
+dayroman       DayRoman (Apostrophiclabs)                   [not installed]
+eurofont       Euro symbols (Adobe)                         [not installed]
+garamond       GaramondNo8 (URW)                            [not installed]
+garamondx      GaramondNo8 Expert (Michael Sharpe)          [not installed]
+lettergothic   LetterGothic (URW)                           [not installed]
+luximono       LuxiMono (Bigelow & Holmes)                  [not installed]
+vntex-nonfree  VnTeX nonfree (Han The Thanh)                [not installed]
+webomints      Webomints (Galapagos Design Group)           [not installed]
+
+
+Atualize
+sudo mktexlsr
+
+Falhou
+Testando
+tex testfont #ou pdftex testfont
+digite o nome da fonte
+
+Tente
+kpsewhich luximono.map

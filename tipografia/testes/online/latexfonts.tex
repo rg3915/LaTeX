@@ -1,0 +1,121 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{anttor}
+\usepackage[T1]{pbsi} %brushscr
+\usepackage{calligra}
+\usepackage{concrete}
+\usepackage[clock,weather]{ifsym}
+\usepackage[math]{iwona}
+\usepackage{yfonts}
+\usepackage[margin=3cm]{geometry}
+
+\newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez}
+\renewcommand\familydefault{cmr}
+
+%familia
+\newcommand{\fonte}[2]{
+  {\fontfamily{#1}\selectfont #2}
+}
+
+\pagestyle{empty}
+\begin{document}
+
+Fontes descritas em \href{http://suppiya.files.wordpress.com/2008/02/latex_fonts.pdf}{LaTeX Fonts} de Ki-Joo Kim.
+
+\subsection*{Computer Modern Roman (padrão)}
+
+\frase
+
+\subsection*{antt}
+
+\verb|\usepackage{anttor}|
+
+\fonte{antt}{\frase}
+
+\emph{\fonte{antt}{\frase}}
+
+
+\subsection*{augie}
+
+Não precisa carregar pacote.
+
+\fonte{augie}{\frase}
+
+
+\subsection*{brushscr}
+
+\verb|\usepackage[T1]{pbsi}|
+
+\textbsi{\frase}
+
+
+\subsection*{calligra}
+
+\verb|\usepackage{calligra}|
+
+\fonte{calligra}{\frase}
+
+
+\subsection*{concrete}
+
+\verb|\usepackage{concrete}|
+
+\fonte{ccr}{\frase}
+
+\emph{\fonte{ccr}{\frase}}
+
+
+\subsection*{ifsym}
+
+\verb|\usepackage[clock,weather]{ifsym}|
+
+O pacote \texttt{ifsym} é um pacote de símbolos, dentre eles: \emph{clock} que mostra as horas: \verb|\showclock{3}{40}| \showclock{3}{40}.
+
+\verb|\SunCloud| que mostra um sol com nuvem \SunCloud{} e \verb|\textifsym{123.45}| que mostra \textifsym{123.45}.
+
+Para ver os demais símbolos digite \verb|texdoc ifsym| no terminal.
+
+
+\subsection*{iwona}
+
+\verb|\usepackage[math]{iwona}|
+
+Este pacote possui suporte para modo matemático.
+
+\fonte{iwona}{\frase}
+
+\emph{\fonte{iwona}{\frase}}
+
+\fonte{iwona}{$1 2 3 4 5 6 7 8 9 0$} - modo matemático.
+ 
+\fonte{iwona}{1 2 3 4 5 6 7 8 9 0} - modo texto.
+
+
+\subsection*{yfonts}
+
+\verb|\usepackage{yfonts}|
+
+\textbf{Gotisch}
+
+\textgoth{\frase}
+
+\textbf{Schwabacher}
+
+\textswab{\frase}
+
+\textbf{Fraktur}
+
+\textfrak{\frase}
+
+\textbf{Baroque}
+
+\textinit{A B C D E}
+
+\yinipar{L}etra grande ao iniciar uma frase. Uma frase grande com pelo menos 4 linhas de texto. Este tipo de fonte era usado em livros antigos, e até hoje ainda é usado em livros sagrados ou clássicos. Esta fonte dá um estilo decorativo a frase. Para escrevê-lo digite, por exemplo, \verb|\yinipar{L}etra|. Se o parágrafo tiver várias linhas de texto a letra quebra as linhas iniciais do texto.
+
+
+\end{document}

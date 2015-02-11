@@ -1,0 +1,50 @@
+emerald
+
+wget mirrors.ctan.org/fonts/emerald.zip
+unzip emerald.zip
+kpsewhich --var-value TEXMFLOCAL
+sudo -H mktexlsr
+
+
+wget mirrors.ctan.org/fonts/emerald.zip
+unzip emerald.zip 
+sudo cp -r emerald/. /usr/local/share/texmf/
+kpsewhich --var-value TEXMFLOCAL
+sudo -H mktexlsr
+sudo texhash
+
+wget mirrors.ctan.org/fonts/emerald.zip
+unzip emerald.zip
+sudo cp emerald
+
+
+
+
+sudo apt-get install perl-tk
+./install-tl --gui=perltk
+
+
+sudo dpkg -l | grep texlive
+
+
+sudo cp -r * /usr/local/texlive/texmf-local/
+
+
+
+
+
+
+
+
+**********************************************
+
+cd ~/lixo
+wget http://mirror.ctan.org/fonts/emerald.zip
+unzip emerald.zip
+cd emerald
+rm -rf others 
+sudo cp -r * /usr/local/texlive/texmf-local
+sudo texhash
+sudo updmap-sys --enable Map=emerald.map
+cd ~lixo
+rm -rf emerald

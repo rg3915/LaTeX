@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\DeclareMathAlphabet\mathpzc{OT1}{pzc}{m}{it} %para \mathpzc
+\DeclareMathAlphabet\mathpazo{OML}{zplm}{m}{it} %para mathpazo
+
+% Modo matem\'atico em tamanho normal
+\everymath{\displaystyle}
+
+\newcommand{\frase}{Tem Abelhas Bexiga Que Coelho Fugitivo fumaça Major Xadrez}
+
+\begin{document}
+
+$\mathcal{ABCDEFULH}$
+
+$\mathscr{ABCDEFULH}$ requer o pacote \verb|mathrsfs|
+
+$\int \mathscr{L} dt$
+
+$\mathpzc{ABCDEFabcdef123}$ para que esta opção funcione digite no preâmbulo\\
+\verb|\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}|
+
+$\mathbb{Z}$ requer o pacote \verb|amsfonts|
+
+\frase $1234567890$ $abcuvwxyz$
+
+$\int L dt$
+
+$\mathpazo{Tem Abelhas Bexiga Que Coelho Fugitivo fumaca Major Xadrez}$
+
+$\mathpazo{\int L dt}$
+
+
+\end{document}

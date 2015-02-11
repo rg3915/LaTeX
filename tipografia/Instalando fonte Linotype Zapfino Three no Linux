@@ -1,0 +1,19 @@
+Instalando fonte Linotype Zapfino Three no Linux
+
+http://font.downloadatoz.com/font,11544,linotypezapfino-three.html
+
+- Descompacte e crie uma subpasta em /usr/share/fonts/truetype/
+mkdir /usr/share/fonts/truetype/linotypeZapfino
+
+Copie o arquivo LinotypeZapfino Three.ttf para a pasta criada
+sudo cp Downloads/LinotypeZapfino\ Three.ttf /usr/share/fonts/truetype/linotypeZapfino/
+
+Depois atualize a lista de fontes
+fc-cache -fv
+
+Se quiser listar a fonte LinotypeZapfino instalada digite
+fc-list | grep -i linotype
+
+
+Instalando fonte xkcd
+wget http://simonsoftware.se/other/xkcd.ttf

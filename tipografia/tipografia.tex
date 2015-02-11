@@ -1,0 +1,1576 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{amssymb,amsfonts,amsmath,indentfirst}
+\usepackage{enumerate,graphicx,etoolbox}
+\usepackage{textcomp,marvosym,wasysym,eurosym,mathrsfs,pifont}
+\usepackage{lipsum,exscale,fix-cm}
+\usepackage{anttor}
+\usepackage[T1]{pbsi} %brushscr
+\usepackage{calligra}
+% \usepackage{concrete}
+% \usepackage[clock,weather]{ifsym}
+% \usepackage[math]{iwona}
+\usepackage{yfonts}
+\usepackage[margin=3cm]{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{pdfpagelayout=SinglePage, %TwoPageLeft
+  bookmarksopen=true,
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black,
+  pdftitle={Tipografia},
+  pdfauthor={R\'egis S. Santos}
+}
+
+%\DeclareMathAlphabet\mathpazo{OML}{zplm}{m}{it}
+
+% Modo matem\'atico em tamanho normal
+% \everymath{\displaystyle}
+% Define o caminho das figuras.
+\graphicspath{{/media/HD/LaTeX/site/fig_site/tipografia}}
+
+% Figuras
+\newcommand{\myfig}[2][width=5cm]{
+    \begin{figure}[!htb]
+      \centering
+      \includegraphics[#1]{/media/HD/LaTeX/site/fig_site/tipografia/#2}
+    \end{figure}
+}
+
+% familia
+\newcommand{\fonte}[2]{
+  {\fontfamily{#1}\selectfont #2}
+}
+
+% Frase
+\newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez.}
+
+\DeclareFixedFont{\fonteUtopiaItalico}{T1}{put}{m}{it}{10}
+
+% Fonte padrao deste documento: Computer Modern Roman
+\renewcommand\familydefault{cmr}
+% Fonte padrao para typewriter
+\renewcommand\ttdefault{cmtt}
+
+\makeatletter
+\patchcmd{\tableofcontents}{\@starttoc{toc}}{\thispagestyle{empty}\pagestyle{empty}\@starttoc{toc}}{}{}
+\makeatother
+
+\title{Tipografia\\ Manipulando fontes no \LaTeX}
+\author{\url{http://latexbr.blogspot.com}}
+\date{2012}
+%*******************************************************
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\clearpage
+\pagestyle{plain}
+\cleardoublepage
+
+\chapter{Tipografia}
+
+\href{http://pt.wikipedia.org/wiki/Tipografia}{Tipografia} é a essência do \href{http://latexbr.blogspot.com/2010/04/introducao-ao-latex.html}{LaTeX}. Tipografia trata essencialmente de fontes e seus estilos, então veremos aqui um estudo completo sobre o uso de fontes no LaTeX. A escolha de uma fonte requer 4 características essenciais: família (family), série (serie), forma (shape) e tamanho (size). A seguir, veremos cada uma delas.
+
+A seguir abordaremos os seguintes tópicos sobre \emph{tipografia}:
+
+% <ul>
+% <li>\href{#subt1>Codificação de caracteres}</li>
+% <li>\href{#subt2>Acentos, símbolos e caracteres especiais}</li>
+% <li>\href{#subt3>Enfatizando um texto}</li>
+% <li>\href{#subt4>Família (family)}</li>
+% <li>\href{#subt5>Séries (series)}</li>
+% <li>\href{#subt6>Formas (shape)}</li>
+% <li>\href{#subt7>Tamanho (size)}</li>
+% <li>\href{#subt8>Outras fontes}</li>
+% <li>\href{#subt9>Fontes matemáticas}</li>
+% <li>\href{#subt10>Fontes grandes}</li>
+% <li>\href{#subt11>Catálogo de fontes}</li>
+% </ul>
+
+Um exemplo simples:
+
+\verb|{\textit{\textsf{texto itálico sem serifa}}}|
+
+\begin{center}
+{\textit{\textsf{texto itálico sem serifa}}}
+\end{center}
+
+\
+
+Uma forma geral de manipulação de fontes com o comando \verb|\selectfont| é:
+
+\begin{verbatim}
+{\fontfamily{familia}\fontseries{serie}\fontshape{forma}
+\fontsize{size}{baselineskip}\selectfont texto}
+\end{verbatim}
+
+Baixe \href{}{selectfont.tex}
+
+Porém, veremos mais adiante cada detalhe destes comandos e veremos que existem outras formas de manipular as fontes.
+
+A fonte padrão do LaTeX é \href{http://en.wikipedia.org/wiki/Computer_Modern}{Computer Modern}, criado por \href{http://en.wikipedia.org/wiki/Donald_Knuth}{Donald Knuth}. E o tamanho padrão é 10pt.
+
+\begin{verbatim}
+\familydefault = \rmdefault = Computer Modern Roman
+\fontsize{10}{12} = \normalsize
+\end{verbatim}
+
+\verb|\familydefault| significa \emph{família} padrão de fonte e \verb|\rmdefault| significa fonte no estilo \emph{romano}.
+
+\verb|\fontsize{10}{12}| é o \emph{tamanho} da fonte (será explicado melhor mais pra frente) e \verb|\normalsize| é a fonte no seu tamanho padrão (normal).
+
+Veja a seguir um \href{}{guia rápido} dos principais comandos para manipulação de fontes.
+
+\
+
+* GUIA RÁPIDO (+ comandos)
+
+* Fazer um resumo de todas as famílias usadas aqui.
+
+\href{http://pt.wikipedia.org/wiki/Pangrama}{Pangrama}
+
+\
+
+Nota: Onde aparecer \verb|texdoc| significa que você pode localizar a documentação de um pacote pelo \emph{terminal} digitando \verb|texdoc nome-do-pacote|.
+
+
+\section{Codificação de caracteres}
+
+A codificação de caracteres vai além do ASCII. Para que o LaTeX reconheça os caracteres acentuados como 'á' ou 'ç' (cê-cedilha), por exemplo, é necessário uma codificação de \emph{entrada} e uma de \emph{saída}. A codificação é importante, pois dependendo do sistema operacional ou do editor usado os caracteres (acentuados) podem não ser interpretados corretamente.
+
+O pacote que gerencia codificação de \textbf{entrada} é o
+
+\verb|\usepackage{inputenc}|
+
+Para \href{http://latexbr.blogspot.com/2011/10/lancado-ubuntu-1110-oneiric-ocelot.html}{Linux} a codificação padrão é a \href{http://pt.wikipedia.org/wiki/Unicode}{unicode}, então use a opção
+
+\verb|\usepackage[utf8]{inputenc}|
+
+Para \emph{Windows} o padrão é ISO, então use
+
+\verb|\usepackage[latin1]{inputenc}|
+
+Para \emph{Mac} experimente UTF8 ou applemac
+
+\verb|\usepackage[applemac]{inputenc}|
+
+Caso haja a necessidade de converter seus arquivos ISO para UTF8, ou vice-versa, leia \href{http://latexbr.blogspot.com/2011/01/recodificando-seus-arquivos-iso-para.html}{Recodificando seus arquivos ISO para UTF8}.
+
+O pacote que gerencia codificação de \textbf{saída} é o
+
+\verb|\usepackage{fontenc}|
+
+por padrão use a opção
+
+\verb|\usepackage[T1]{fontenc}|
+
+\
+
+Para os exemplos a seguir vamos definir um preâmbulo básico:
+
+\begin{verbatim}
+\documentclass[a4paper]{article}
+% cod. entrada
+\usepackage[utf8]{inputenc} %Linux - ou [latin1] para Win
+% cod. saida
+\usepackage[T1]{fontenc}
+% idioma
+\usepackage[brazil]{babel}
+
+\begin{document}
+  ...
+\end{document}
+\end{verbatim}
+
+\section{Acentos, símbolos e caracteres especiais}
+
+Usando a codificação correta o LaTeX aceita entradas de acentos na forma tradicional (exemplo, \emph{é ação}), porém o LaTeX possui uma entrada especial de caracteres acentuados. Sendo assim, a frase \emph{é ação} pode ser digitada como \verb|\'e a\c c\~ao|. Este método pode ser usado sempre, independente da codificação usada. Veja a tabela a seguir:
+
+%*\#tabela: ja existe on line
+% \myfig[width=7cm]{acentos}
+\begin{center}
+\begin{tabular}{@{}l@{\ }ll@{\ }ll@{\ }ll@{\ }ll@{\ }l@{}}
+\hline
+\`o   & \verb!\`o! &
+\'o   & \verb!\'o! &
+\^o   & \verb!\^o! &
+\~o   & \verb!\~o! &
+\=o   & \verb!\=o! \\
+\.o   & \verb!\.o! &
+\"o   & \verb!\"o! &
+\c o  & \verb!\c o! &
+\v o  & \verb!\v o! &
+\H o  & \verb!\H o! \\
+\c c  & \verb!\c c! &
+\d o  & \verb!\d o! &
+\b o  & \verb!\b o! &
+\t oo & \verb!\t oo! &
+\oe   & \verb!\oe! \\
+\OE   & \verb!\OE! &
+\ae   & \verb!\ae! &
+\AE   & \verb!\AE! &
+\aa   & \verb!\aa! &
+\AA   & \verb!\AA! \\
+\o    & \verb!\o! &
+\O    & \verb!\O! &
+\l    & \verb!\l! &
+\L    & \verb!\L! &
+\i    & \verb!\i! \\
+\j    & \verb!\j! &
+!`    & \verb!~`! &
+?`    & \verb!?`! & \\
+\hline
+\end{tabular}
+\end{center}
+
+Além disso, os caracteres especiais mais comuns são:
+
+\begin{center}
+  \begin{tabular}{cccccccccc}
+    caracter & \# & \$ & \% & \^{} & \& & \_ & \{ & \} & \~{} \\
+    comando & \verb|\#| & \verb|\$| & \verb|\%| & \verb|\^| & \verb|\&| & \verb|\_| & \verb|\{| & \verb|\}| & \verb|\~|
+  \end{tabular}
+\end{center}
+
+Para mostrar \textbackslash digite \verb|\textbackslash|.
+
+Outros dois símbolos muito usados são:
+
+\begin{center}
+  \begin{tabular}{|l|l|}
+    1\textordmasculine & \verb|\textordmasculine| \\
+    1\textordfeminine & \verb|\textordfeminine| \\
+  \end{tabular}
+\end{center}
+
+\noindent experimente também \verb|$60^\circ$|.
+
+O LaTeX possui milhares de símbolos e eles estão documentados em \href{http://linorg.usp.br/CTAN/info/symbols/comprehensive/symbols-a4.pdf}{The Comprehensive \LaTeX\ Symbol List} de Scott Pakin. Você também pode digitar \verb|texdoc symbols| no terminal para visualizar a documentação. Vejamos alguns exemplos descritos nesse manual:
+
+\begin{center}
+  \begin{tabular}{|l|l|}
+    @ & \verb|@|\\
+    \copyright & \verb|\copyright| \\
+    \textregistered & \verb|\textregistered|
+  \end{tabular}
+\end{center}
+
+Às vezes é necessário carregar um pacote específico para mais símbolos.
+
+O símbolo \textperthousand{} requer o pacote \texttt{textcomp} (\verb|texdoc textcomp|).
+
+\begin{verbatim}
+\usepackage{textcomp}
+\begin{document}
+ \textperthousand
+\end{document}
+\end{verbatim}
+
+Veja alguns símbolos do pacote \texttt{marvosym} (\verb|texdoc marvosym|).
+
+\begin{center}
+  \begin{tabular}{|l|l|}
+    \MVAt & \verb|\MVAt| \\
+    \Smiley & \verb|\Smiley| \\
+    \Heart & \verb|\Heart| \\
+    \Radioactivity & \verb|\Radioactivity| \\
+    \Football & \verb|\Football| \\
+    \NoIroning & \verb|\NoIroning| \\
+    \MartinVogel & \verb|\MartinVogel|
+  \end{tabular}
+\end{center}
+
+Pacote \texttt{wasysym} (\verb|texdoc wasysym|).
+
+\begin{center}
+  \begin{tabular}{|l|l|}
+    \smiley & \verb|\smiley| \\
+    \male & \verb|\male| \\
+    \female & \verb|\female| \\
+    \eighthnote & \verb|\eighthnote| \\
+    \twonotes & \verb|\twonotes| \\
+  \end{tabular}
+\end{center}
+
+O pacote \texttt{eurosym} oferece os símbolos do Euro.
+
+\begin{center}
+  \begin{tabular}{|l|l|}
+    \officialeuro & \verb|\officialeuro| \\
+    \geneuro & \verb|\geneuro| \\
+    \geneuronarrow & \verb|\geneuronarrow| \\
+    \geneurowide & \verb|\geneurowide| \\
+  \end{tabular}
+\end{center}
+
+Atenção: se você carregar todos os pacotes mencionados de uma vez eles devem respeitar uma ordem para que não gere conflito; coloque o \texttt{marvosym} primeiro.
+
+\begin{verbatim}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{eurosym}
+\end{verbatim} 
+
+Veja em \href{}{simbolos.tex} alguns exemplos de símbolos.
+
+\subsection*{Símbolos matemáticos}
+
+A seguir alguns símbolos matemáticos. Se for colocar numa linha de texto lembre-se de usar \verb|$...$|. Requer o pacote \texttt{amssymb}.
+
+\begin{center}
+  \begin{tabular}{|l|l|l|l|l|l}
+    $\leqslant$ & \verb|\leqslant| 	& $\bot$ & \verb|\bot| 		& $\infty$ & \verb|\infty| \\
+    $\geqslant$ & \verb|\geqslant| 	& $\exists$ & \verb|\exists| 	& $\therefore$ & \verb|\therefore| \\
+    $\rightarrow$ & \verb|\rightarrow| 	& $\forall$ & \verb|\forall| 	& $\triangle$ & \verb|\triangle| \\
+    $\Rightarrow$ & \verb|\Rightarrow| 	& $\in$ & \verb|\in| 		& $\overline{a}$ & \verb|\overline{a}| \\
+    $\Leftrightarrow$ & \verb|\Leftrightarrow| & $\emptyset$ & \verb|\emptyset| & $\overrightarrow{a}$ & \verb|\overrightarrow{a}| \\
+  \end{tabular}
+\end{center}
+
+No site \href{http://detexify.kirelabs.org/classify.html}{Detexify} você pode desenhar o símbolo que ele descobre o código LaTeX pra você.
+
+\section{Enfatizando um texto}
+
+O LaTeX enfatiza um texto de uma forma bem simples: se o texto estiver no modo normal ele enfatiza em \emph{itálico}, caso contrário (texto em itálico) ele enfatiza para o modo normal.
+
+O comando é \verb|\emph{}|. Veja um exemplo:
+
+\verb|Veja este texto \emph{enfatizado}.|
+
+% exemplo no site: centralizado e com estilo.
+\begin{center}
+Veja este texto \emph{enfatizado}.                                  \end{center}
+
+\verb|\emph{Se o texto já estiver enfatizado a fonte \emph{normal} será usada para|
+
+\verb|enfatizar este texto.}|
+
+\begin{center}
+\emph{Se o texto já estiver enfatizado a fonte \emph{normal} será usada para enfatizar este texto.}
+\end{center}
+
+\section{Família (family)}
+
+%fonte_familia.tex
+
+Essencialmente é o \emph{tipo de fonte}, ou um grupo de fontes que possuem o mesmo \emph{estilo}.
+
+Conforme dito antes, a fonte padrão do LaTeX é a \href{http://en.wikipedia.org/wiki/Computer_Modern}{Computer Modern}. E este possui $3$ estilos diferentes, conforme a tabela abaixo:
+
+% <div align=center>
+% <table align=center border=1 cellpadding=2 style=border-collapse: collapse;><tbody>
+% <tr> <td><strong>comando</strong></td> 
+% <td><strong>equivalente</strong></td> 
+% <td><strong>valor*</strong></td> 
+% <td><strong>resultado</strong></td>
+% </tr>
+% <tr>
+% <td><span style=font-family: 'Courier New'; font-size: x-small;>\textrm{…}</span></td> 
+% <td><span style=font-family: 'Courier New';>{\rmfamily…}</span></td> 
+% <td><span style=font-family: 'Courier New';>cmr</span></td> <td>Romano (padrão)</td>
+% </tr>
+% <tr>
+% <td><span style=font-family: 'Courier New';>\textsf{…}</span></td> <td><span style=font-family: 'Courier New';>{\sffamily…}</span></td> <td><span style=font-family: 'Courier New';>cmss</span></td> <td>Sem serifa</td>
+% </tr>
+% <tr>
+% <td><span style=font-family: 'Courier New';>\texttt{…}</span></td> <td><span style=font-family: 'Courier New';>{\ttfamily…}</span></td> <td><span style=font-family: 'Courier New';>cmtt</span></td> <td>Monoespaço (<span style=font-family: 'Courier New';>máquina de escrever)</span></td></tr>
+% </tbody></table>
+% </div>
+% * Valor na classe \emph{article}.
+
+\begin{center}
+  \begin{tabular}{l|l|l|l}
+    \textbf{comando} & \textbf{equivalente} & \textbf{valor*} & \textbf{resultado}\\
+    \hline
+    \verb|\textrm{...}| & \verb|{\rmfamily ...}| & \texttt{cmr} & romano (padrão)\\
+    \verb|\textsf{...}| & \verb|{\sffamily ...}| & \texttt{cmss} & \textsf{sem serifa}\\
+    \verb|\texttt{...}| & \verb|{\ttfamily ...}| & \texttt{cmtt} & \texttt{monoespaço (máquina de escrever)} \\
+  \end{tabular}
+\end{center}
+
+\noindent * valor na classe \emph{article}.
+
+\textbf{Obs}: os comandos da primeira coluna são mais recomendados que os da segunda coluna, pois o resultado nem sempre é o mesmo em relação ao espaçamento.
+
+Veja no exemplo a seguir como usar a fonte sem serifa num \textbf{trecho de texto}.
+
+\
+
+% site: código + texto sem serifa
+
+\begin{minipage}[t]{.45\textwidth}
+  \begin{verbatim}
+  \textsf{Texto sem serifa}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.45\textwidth}
+  \textsf{Texto sem serifa}
+\end{minipage}
+
+Também pode ser escrito da seguinte forma:
+
+\begin{minipage}[t]{.45\textwidth}
+  \begin{verbatim}
+  {\sffamily Texto sem serifa}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.45\textwidth}
+  {\sffamily Texto sem serifa}
+\end{minipage}
+
+Para usar uma família no \textbf{documento todo} digite no preâmbulo
+
+\begin{verbatim}
+\renewcommand\familydefault{\sfdefault}
+\end{verbatim} 
+
+\noindent e continue o texto normalmente. Baixe o \href{}{fonte\_sem\_serifa.tex}.
+
+Muitas fontes no LaTeX requer algum pacote no preâmbulo, mas outras já são carregadas por padrão. Veja a seguir as famílias de fontes mais comuns segundo o \href{http://linorg.usp.br/CTAN/macros/latex/doc/fntguide.pdf}{\LaTeXe font selection} (\verb|texdoc fntguide|).
+
+\begin{center}
+  \begin{tabular}{ll}
+    \textbf{valor} & \textbf{família} \\
+    \texttt{cmr} & Computer Modern Roman \\
+    \texttt{cmss} & Computer Modern Sans \\
+    \texttt{cmtt} & Computer Modern Typewriter \\
+    \texttt{cmm} & Computer Modern Math Italic \\
+    \texttt{cmsy} & Computer Modern Math Symbols \\
+    \texttt{cmex} & Computer Modern Math Extensions \\
+    \texttt{ptm} & Adobe Times \\
+    \texttt{phv} & Adobe Helvetica \\
+    \texttt{pcr} & Adobe Courier \\
+  \end{tabular}
+\end{center}
+
+Vejamos um exemplo com a família \emph{Adobe Helvetica} num \textbf{trecho de texto}.
+
+\begin{minipage}[t]{.75\textwidth}
+  \begin{verbatim}
+  {\fontfamily{phv}\selectfont Texto Helvetica}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.20\textwidth}
+  {\fontfamily{phv}\selectfont Texto Helvetica}
+\end{minipage}
+
+Repare no uso de \verb|\selectfont|, sem ele você pode obter resultados inesperados. Veja também as chaves \verb|{...}| nos extremos, que seleciona o texto desejado, sem ele todo o texto após o comando teria a mesma aparência.
+
+Segundo o \href{http://linorg.usp.br/CTAN/macros/latex/doc/fntguide.pdf}{fntguide} podemos usar o comando \verb|\usefont| para suprimir o uso do \verb|\selectfont|. Veremos sua sintaxe mais adiante. No exemplo anterior, o comando fica assim:
+
+\begin{verbatim}
+{\usefont{T1}{phv}{}{} Texto Helvetica}
+\end{verbatim}
+
+Uma sugestão também é usar um novo comando.
+
+\begin{verbatim}
+%familia
+\newcommand{\fonte}[2]{
+  {\fontfamily{#1}\selectfont #2}
+}
+\begin{document}
+  \fonte{phv}{Texto Helvetica}
+
+  \fonte{pcr}{Texto Adobe Courier}
+\end{document}
+\end{verbatim}
+
+E ainda, com este novo comando podemos usar qualquer outra família, tornando mais flexível a manipulação das fontes.
+
+\textbf{Sugestão}: Use \verb|\newcommand| sempre que possível, assim você facilita e muito na estruturação lógica do documento.	
+
+Ainda temos mais uma opção, segundo Alan Munn em \href{http://tex.stackexchange.com/a/25251/1940}{Restricting the scope of the selection (TeX.sx)}: definir um novo ambiente.
+
+\begin{verbatim}
+%definindo novo ambiente
+\newenvironment{fonteHelvetica}{\fontfamily{phv}\selectfont}{\par}
+%usando o ambiente
+\begin{fonteHelvetica}
+  Texto Helvetica num ambiente
+\end{fonteHelvetica}
+\end{verbatim}
+
+Para usar a fonte Helvetica no \textbf{documento todo} temos duas opções:
+
+\begin{enumerate}[1)]
+ \item Renomeando a fonte padrão
+
+\begin{verbatim}
+%Adobe Helvetica
+\renewcommand\familydefault{phv}
+\end{verbatim}
+
+ou
+
+ \item carregando o pacote \href{http://ctan.tche.br/help/Catalogue/entries/helvet.html}{helvet}.
+
+\begin{verbatim}
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\end{verbatim} 
+\end{enumerate}
+
+A vantagem é que, em ambos os casos, podemos digitar o texto no modo normal, \emph{itálico} e/ou \textbf{negrito} que teremos todos os formatos do Helvetica (sem serifa). Baixe \href{}{fonte\_familia\_helvetica\_all1.tex} e \href{}{fonte\_familia\_helvetica\_all2.tex}
+
+Veja a seguir algumas das $35$ fontes \emph{postscript} suportadas pela distribuição básica \href{http://ctan.tche.br/macros/latex/required/psnfss/psnfss2e.pdf}{psnfss2e} (texdoc) e relacionadas em \href{http://www.tug.org/fontname/html/Standard-PostScript-fonts.html}{PostScript-fonts} (texdoc).
+
+%/usr/local/texlive/2011/texmf-dist/doc/fonts/fontname
+
+\begin{verbatim}
+% New Century Schoolbook
+\fonte{pnc}{\frase}
+
+% Uncial
+\fonte{uncl}{\frase}
+
+% Zapf Chancery
+\fonte{pzc}{\frase}
+\end{verbatim} 
+
+% New Century Schoolbook
+\fonte{pnc}{\frase}
+
+% Uncial
+\fonte{uncl}{\frase}
+
+% Zapf Chancery
+\fonte{pzc}{\frase}
+
+% site: figfamilia_psnfss2e.png
+
+\
+
+Baixe \href{}{fonte\_familia\_psnfss2e.tex} e compare \emph{Computer Modern Roman} com \emph{Times}.
+
+Observe ainda, que neste exemplo não foi necessário carregar nenhum pacote de fonte.
+
+\section{Séries (series)}
+
+Basicamente é a fonte em \textbf{negrito}, mas, segundo o \href{http://linorg.usp.br/CTAN/macros/latex/doc/fntguide.pdf}{fntguide}, existem 5 séries diferentes, são eles:
+
+\begin{center}
+  \begin{tabular}{l|l|l|l}
+    \textbf{comando} & \textbf{equivalente} & \textbf{valor} & \textbf{resultado}\\
+    \hline
+    \verb|\textbf{...}| & \verb|{\bfseries ...}| & \texttt{bx} & \textbf{negrito (bold extended)}\\
+    \verb|\textmd{...}| & \verb|{\mdseries ...}| & \texttt{m} & \textmd{negrito médio}\\
+			& 			 & \texttt{b} & negrito (bold) \\
+			& 			 & \texttt{sb} & semi-negrito \\
+			& 			 & \texttt{c} & condensado \\
+  \end{tabular}
+\end{center}
+
+Veja no exemplo a seguir um \textbf{trecho de texto} em negrito:
+
+\
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  \textbf{Texto em negrito}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  \textbf{Texto em negrito}
+\end{minipage}
+
+Por padrão a classe \emph{article} aceita os comandos \verb|\textbf{...}| (bx) e \verb|\textmd{...}| (m). O efeito do segundo é idêntico a fonte no modo normal.
+
+As demais \emph{séries} geralmente são aceitas em fontes \emph{PostScript}.
+
+\subsection*{Sublinhado}
+%wikibooks #fonts
+
+A fonte \uline{sublinhada} não faz parte da classe \emph{article}, para usá-la deve-se carregar o pacote \texttt{ulem} junto com a opção \verb|normalem|, que mantém o texto no modo normal por padrão.
+
+\begin{verbatim}
+\usepackage[normalem]{ulem}
+\end{verbatim}
+
+Veja a seguir um texto sublinhado.
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  \uline{Texto sublinhado}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  \uline{Texto sublinhado}
+\end{minipage}
+
+Veja a seguir os 7 modos de texto sublinhado (\verb|texdoc ulem|):
+
+\begin{center}
+  \begin{tabular}{ll}
+    \textbf{comando} & \textbf{resultado} \\
+    \verb|\uline{...}| 	& \uline{sublinhado} \\
+    \verb|\uuline{...}| 	& \uuline{sublinhado duplo} \\
+    \verb|\uwave{...}| 	& \uwave{ondulado} \\
+    \verb|\sout{...}|	 	& \sout{riscado} \\
+    \verb|\xout{...}|	 	& \xout{hachurado} \\
+    \verb|\dashuline{...}| 	& \dashuline{tracejado} \\
+    \verb|\dotuline{...}| 	& \dotuline{pontilhado} \\
+  \end{tabular}
+\end{center}
+
+% site: figulem.png
+
+Baixe \href{}{fonte\_sublinhada.tex}
+
+\section{Formas (shape)}
+
+As 5 \emph{formas} de fontes são:
+
+\begin{center}
+  \begin{tabular}{l|l|l|l}
+    \textbf{comando} & \textbf{equivalente} & \textbf{valor} & \textbf{resultado}\\
+    \hline
+    \verb|\textup{...}| & \verb|{\upshape ...}| & \texttt{n} 	& \textup{forma vertical}\\
+    \verb|\textit{...}| & \verb|{\itshape ...}| & \verb|\it| 	& \textit{itálico}\\
+    \verb|\textsl{...}| & \verb|{\slshape ...}| & \verb|\sl| 	& \textsl{inclinado}\\
+    \verb|\textsc{...}| & \verb|{\scshape ...}| & \verb|\sc| 	& \textsc{caixa baixa}\\
+    \verb|\uppercase{...}| & 			& 		& \uppercase{caixa alta}\\
+  \end{tabular}
+\end{center}
+
+Veja o significado de cada sigla:
+
+\begin{center}
+  \begin{tabular}{ll}
+    \textbf{valor} & \textbf{forma} \\
+    \verb|n| 	& normal \\
+    \verb|it| 	& italic (itálico) \\
+    \verb|sl| 	& slanted (inclinado) \\
+    \verb|sc| 	& small caps (capital pequeno) \\
+  \end{tabular}
+\end{center}
+
+Veja os exemplos a seguir.
+
+\
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  \textit{Texto itálico}
+  ou
+  {\it Texto itálico}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  \textit{Texto itálico}
+\end{minipage}
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  \textsl{Texto inclinado}
+  ou
+  {\sl Texto inclinado}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  \textsl{Texto inclinado}
+\end{minipage}
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  \textsc{caixa baixa}
+  ou
+  {\sc caixa baixa}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  \textsc{caixa baixa}
+\end{minipage}
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  \uppercase{caixa alta}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  \uppercase{caixa alta}
+\end{minipage}
+
+Baixe \href{}{fonte\_shape.tex}
+
+Para usar \textit{itálico} no \textbf{documento todo} use
+
+\begin{verbatim}
+\renewcommand{\shapedefault}{\itdefault}
+\end{verbatim}
+
+\section{Tamanho (size)}
+
+A quarta característica essencial de uma fonte é o \emph{tamanho}.
+
+Tanto em \emph{article, report} ou \emph{book} o tamanho de fonte padrão é 10pt, $(1pt \cong 0.3513\,mm)$ considerada como tamanho \emph{normal}. Além disso, cada classe aceita como opção 10pt, 11pt ou 12pt como tamanho normal.
+
+A partir daí cada tamanho de fonte é definido por um nome. Veja na tabela a seguir cada nome e seu valor numérico equivalente.
+
+\begin{center}
+  \begin{tabular}{ll}
+    \textbf{comando} & \textbf{valor*} \\
+    \verb|\tiny| 		& 5 pt \\
+    \verb|\scriptsize| 		& 7 pt \\
+    \verb|\footnotesize| 	& 8 pt \\
+    \verb|\small| 		& 9 pt \\
+    \verb|\normalsize| 		& 10 pt (padrão) \\
+    \verb|\large| 		& 12 pt \\
+    \verb|\Large| 		& 14.4 pt \\
+    \verb|\LARGE| 		& 17.28 pt \\
+    \verb|\huge| 		& 20.74 pt \\
+    \verb|\Huge| 		& 24.88 pt \\
+  \end{tabular}
+\end{center}
+
+* Estes são os valores para a classe \emph{article} com tamanho padrão 10pt. Para 11pt e 12pt os valores variam um pouco. Mais informações em \href{http://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Sizing_text}{wikibooks sizing text}.
+
+Veja no exemplo a seguir como usar um dos tamanhos de fonte.
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+  {\Huge Texto tamanho Huge}
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  {\Huge Texto tamanho Huge}
+\end{minipage}
+
+Também poderíamos definir um novo comando, por exemplo
+
+\verb|\newcommand{\fontegrande}[1]{{\Huge #1}}| e usá-lo
+
+\verb|\fontegrande{Texto grande}|
+
+Baixe \href{}{fonte\_tamanho.tex}.
+
+Observe o uso de chave dupla \verb|{{...}}| isto é necessário para que o tamanho da fonte seja aplicado somente no texto selecionado.
+
+\subsection*{Definindo o tamanho da fonte numericamente}
+
+Uma outra forma de definir o tamanho da fonte é numericamente com o comando
+
+\begin{verbatim}
+\fontsize{size}{baselineskip}
+\end{verbatim}
+
+\noindent mas este comando não é muito usual.
+
+\emph{size} significa tamanho e \emph{baselineskip} é a distância vertical entre linhas num parágrafo. Por padrão \verb|baselineskip = 1.2 * size|, assim para uma fonte de 10pt teremos
+
+\begin{verbatim}
+{\fontsize{10}{12}\selectfont Texto tamanho 10pt}
+\end{verbatim}
+
+É aconselhável que se use um novo comando colocando o \emph{baselineskip} como opção.
+
+\begin{verbatim}
+\newcommand{\tamanho}[3][12pt]{
+  {\fontsize{#2}{#1}\selectfont #3}
+}
+\end{verbatim}
+
+\noindent onde \verb|#1| é o \emph{baselineskip} definido por padrão como 12pt (\verb|#1| é opcional, neste caso). \verb|#2| é size (tamanho) e \verb|#3| é o texto.
+
+Veja no exemplo a seguir:
+
+\begin{verbatim}
+\tamanho[27.6]{23}{Tamanho de fonte definido por novo comando}
+\end{verbatim}
+
+Depois, digite outro tamanho de fonte para alternar, por exemplo:
+
+\begin{verbatim}
+\normalsize 
+\end{verbatim}
+
+Baixe \href{}{fonte\_tamanho.tex}.
+
+\subsection*{O comando \texttt{\textbackslash usefont}}
+
+A vantagem de uso do comando \verb|\usefont| é que ele suprime a necessidade do \verb|\selectfont|, mas ele não define o tamanho da fonte. Vejamos sua sintaxe:
+
+\begin{verbatim}
+\usefont{codificacao}{familia}{series}{forma}
+\end{verbatim}
+
+\noindent \emph{codificacao} - de saída, usualmente T1;
+
+\noindent \emph{familia} - aceita a família abreviada (do campo valor*);
+
+\noindent \emph{series} - \verb|m, b, bx, sb, c|;
+
+\noindent \emph{forma} - \verb|n, it, sl, sc|.
+
+Alguns campos podem ficar em branco, mas somente os últimos, ou seja, \verb|codificacao| é obrigatório, depois podemos preencher os próximos sem deixar campo em branco entre o primeiro e o último.
+
+Exemplos:
+
+\verb|{\usefont{T1}{}{}{} texto}| - mantém a forma padrão usada no momento.
+
+\verb|{\usefont{T1}{cmr}{bx}{} texto}| - Computer Modern Roman negrito
+
+\verb|{\usefont{T1}{phv}{m}{it} texto}| - Helvetica itálico
+
+Neste caso, como o campo \emph{series} não pode ficar em branco, usamos a opção \verb|m| que não surte efeito nesta fonte.
+
+Baixe \href{}{usefont.tex}.
+
+\subsection*{O comando \texttt{\textbackslash DeclareFixedFont}}
+
+Uma outra forma é declarando fontes estáticas, ou seja, as fontes sempre serão usadas na forma em que ela for declarada, sem possibilidade de variações.
+
+\begin{verbatim}
+\DeclareFixedFont{comando}{codificacao}{familia}{series}{forma}{tamanho}
+\end{verbatim}
+
+\noindent onde \verb|comando| é o nome do comando. Vejamos um exemplo:
+
+\begin{verbatim}
+\DeclareFixedFont{\fonteUtopiaItalico}{T1}{put}{m}{it}{10}
+\end{verbatim}
+
+{\fonteUtopiaItalico \frase}
+
+\
+
+Baixe \href{}{declarefixedfont.tex}
+
+\section{Fontes coloridas}
+
+ESCREVER SOBRE CORES NAS FONTES.
+
+\section{Outras fontes}
+
+Veja alguns sites com mais fontes para o \LaTeX:
+
+%listar os sites de fontes
+
+Mais adiante veremos como usar as fontes do \href{http://www.tug.dk/FontCatalogue/}{catálogo de fontes do \LaTeX}. Neste tópico veremos como usar as fontes descritas em \href{http://suppiya.files.wordpress.com/2008/02/latex_fonts.pdf}{LaTeX Fonts} de Ki-Joo Kim.
+
+Basicamente precisamos saber somente qual é a família de cada fonte.
+
+Caso a fonte não esteja instalada \href{http://latexbr.blogspot.com.br/2011/10/atualizando-os-pacotes-do-texlive-2011.html}{atualize} o seu TeXLive.
+
+Para aplicar as fontes usaremos o comando \verb|\fonte{}{}| mencionado no início deste material, junto com nossa \verb|\frase| de exemplo. E outros casos, o comando segue em cada exemplo.
+
+% latex_fonts
+
+\subsection*{Computer Modern Roman (padrão)}
+
+\frase
+
+\subsection*{antt}
+
+\verb|\usepackage{anttor}|
+
+\verb|\fonte{antt}{\frase}|
+
+\fonte{antt}{\frase}
+
+\verb|\emph{\fonte{antt}{\frase}}|
+
+\emph{\fonte{antt}{\frase}}
+
+
+\subsection*{augie}
+
+Não precisa carregar pacote.
+
+\verb|\fonte{augie}{\frase}|
+
+\fonte{augie}{\frase}
+
+
+\subsection*{brushscr}
+
+\verb|\usepackage[T1]{pbsi}|
+
+\verb|\textbsi{\frase}|
+
+\textbsi{\frase}
+
+
+\subsection*{calligra}
+
+\verb|\usepackage{calligra}|
+
+\verb|\fonte{calligra}{\frase}|
+
+\fonte{calligra}{\frase}
+
+
+\subsection*{ifsym}
+
+\verb|\usepackage[clock,weather]{ifsym}|
+
+\textbf{Obs}: O pacote \texttt{ifsym} não será mostrado aqui porque dá conflito com \texttt{marvosym}.
+
+\texttt{ifsym} é um pacote de símbolos, dentre eles: \verb|\emph{clock}| que mostra as horas: \verb|\showclock{3}{40}|.
+
+\verb|\SunCloud| que mostra um sol com nuvem e \verb|\textifsym{123.45}|.
+
+Para ver os demais símbolos digite \verb|texdoc ifsym| no terminal.
+
+
+\subsection*{concrete}
+
+\verb|\usepackage{concrete}|
+
+\verb|\fonte{ccr}{\frase}|
+
+\verb|\emph{\fonte{ccr}{\frase}}|
+
+
+\subsection*{iwona}
+
+\verb|\usepackage[math]{iwona}|
+
+Este pacote possui suporte para modo matemático.
+
+\verb|\fonte{iwona}{\frase}|
+
+\textbf{Obs}: Veja o resultado de \textit{concrete} e \textit{iwona} no arquivo de exemplo.
+
+\subsection*{yfonts}
+
+\verb|\usepackage{yfonts}|
+
+\textbf{Gotisch} - \verb|\textgoth{\frase}|
+
+\textgoth{\frase}
+
+\textbf{Schwabacher} - \verb|\textswab{\frase}|
+
+\textswab{\frase}
+
+\textbf{Fraktur} - \verb|\textfrak{\frase}|
+
+\textfrak{\frase}
+
+\textbf{Baroque} - \verb|\textinit{A B C D E}|
+
+\textinit{A B C D E}
+
+\yinipar{L}etra grande ao iniciar uma frase. Uma frase grande com pelo menos 4 linhas de texto. Este tipo de fonte era usado em livros antigos, e até hoje ainda é usado em livros sagrados ou clássicos. Esta fonte dá um estilo decorativo a frase. Para escrevê-lo digite, por exemplo, \verb|\yinipar{L}etra|. Se o parágrafo tiver várias linhas de texto a letra quebra as linhas iniciais do texto.
+
+Baixe \href{}{latex\_fonts.tex}
+
+
+\section{Fontes matemáticas}
+
+Veremos apenas o básico das fontes matemáticas. Lembrando que é necessário usar \verb|$...$|.
+
+As fontes matemáticas mais comuns são:
+
+\begin{center}
+  \begin{tabular}{l|l}
+    \textbf{comando} & \textbf{resultado}\\
+    \hline
+    \verb|\mathcal{...}| & $\mathcal{ABXYZ}$\\
+    \verb|\mathbb{...}|* & $\mathbb{ZRC}$\\
+    \verb|\mathbf{...}| & $\mathbf{uv}$\\
+    \verb|\mathfrak{...}| & $\mathfrak{ABXYZ}$\\
+    \verb|\mathtt{...}| & $\mathtt{ABXYZ}$\\
+    \verb|\mathscr{...}|* & $\mathscr{ABXYZ}$\\
+  \end{tabular}
+\end{center}
+
+Alfabeto com \verb|\mathcal{...}|. Somente letra maiúscula.
+
+\
+
+\begin{center}
+$\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$                    
+\end{center}
+
+\
+
+Conjuntos numéricos com \verb|\mathbb{...}|. Requer o pacote \texttt{amsfonts}.
+
+\
+
+\begin{center}
+$\mathbb{NZQRC}$
+\end{center}
+
+\
+
+Exemplo:
+
+\begin{minipage}[t]{.6\textwidth}
+  \begin{verbatim}
+$\mathcal{U}: \mathbb{R} \to \mathbb{C}$
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  $\mathcal{U}: \mathbb{R} \to \mathbb{C}$
+\end{minipage}
+
+O comando \verb|\mathbf{...}| escreve em negrito.
+
+\
+
+\begin{center}
+$\mathbf{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+
+$\mathbf{abcdefghijklmnopqrstuvwxyz}$
+\end{center}
+\
+
+
+Exemplo:
+
+\begin{verbatim}
+   $\vec{\mathbf{v}} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k}$
+\end{verbatim}
+
+$\vec{\mathbf{v}} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k}$
+
+\
+
+O comando \verb|\mathfrak{...}|.
+
+\
+
+\begin{center}
+$\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+
+$\mathfrak{abcdefghijklmnopqrstuvwxyz}$
+\end{center}
+\
+
+Exemplo:
+
+\begin{minipage}[t]{.5\textwidth}
+  \begin{verbatim}
+$\mathfrak{U} \subset \mathfrak{C}$
+  \end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+  $\mathfrak{U} \subset \mathfrak{C}$
+\end{minipage}
+
+
+\
+
+O comando \verb|\mathtt{...}|.
+
+\
+
+\begin{center}
+$\mathtt{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+
+$\mathtt{abcdefghijklmnopqrstuvwxyz}$
+\end{center}
+
+\
+
+O comando \verb|\mathscr{...}| requer o pacote \texttt{mathrsfs}. Somente letra maiúscula.
+
+\
+
+\begin{center}
+$\mathscr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\end{center}
+
+\
+
+Exemplo:
+
+\begin{verbatim}
+$\int \mathscr{L} dt = \mathscr{F} + \mathscr{H} + \mathscr{U}$
+\end{verbatim}
+
+$\int \mathscr{L} dt = \mathscr{F} + \mathscr{H} + \mathscr{U}$
+
+\
+
+Veja também \href{}{fonte\_mathpazo.tex}
+
+\subsection*{Fontes matemáticas em apresentações com Beamer}
+
+O \textit{beamer}, por padrão, usa fontes sem serifa, então se você quiser que suas expressões matemáticas tenham serifa, digite no preâmbulo
+
+\begin{verbatim}
+\usefonttheme[onlymath]{serif}
+\end{verbatim}
+
+\subsection*{Tamanho de fonte em expressões matemáticas}
+
+O tamanho da fonte em expressões matemáticas é sempre padrão, mas caso a expressão matemática fique muito grande, excedendo a largura da página, é possível reduzir seu tamanho com o comando \verb|\scriptstyle| ou \verb|\scriptscriptstyle|. Este comando deve ser digitado no início da expressão.
+
+$p(x) = a_0 + a_1 x + a_2 x^2 + \ldots + a_n x^n$
+
+$\scriptstyle p(x) = a_0 + a_1 x + a_2 x^2 + \ldots + a_n x^n$
+
+$\scriptscriptstyle p(x) = a_0 + a_1 x + a_2 x^2 + \ldots + a_n x^n$
+
+Veja outros tamanhos:
+
+\newcommand{\funcaoint}{
+  f(t) = \frac{T}{2\pi} \int{\frac{1}{\sin\frac{\omega}{t}}}dt
+}
+
+\begin{center}
+  \begin{tabular}{l|l}
+    \textbf{modo} & \textbf{resultado}\\
+    \hline
+    padrão & $\funcaoint$\\
+    \verb|\displaystyle| & $\displaystyle\funcaoint$\\
+    \verb|\scriptstyle| & $\scriptstyle\funcaoint$\\
+    \verb|\scriptscriptstyle| & $\scriptscriptstyle\funcaoint$\\
+    \verb|\textstyle| & $\textstyle\funcaoint$\\
+  \end{tabular}
+\end{center}
+
+Baixe \href{}{fonte\_mat\_tamanho.tex}
+
+\section{Fontes grandes}
+
+Como vimos anteriormente, o tamanho de fonte vai até 24.88 pt (\verb|\Huge|). Então para fontes maiores que isso precisamos do pacote \texttt{fix-cm}. Veja o exemplo a seguir.
+
+\begin{verbatim}
+{\fontsize{80}{100}\selectfont Texto grande}
+\end{verbatim}
+
+{\fontsize{80}{100}\selectfont Texto grande}
+
+Para expressões matemáticas usamos o pacote \texttt{exscale}. Este pacote corrige o tamanho de todos os elementos da expressão matemática.
+
+\begin{minipage}[t]{0.5\textwidth}
+\begin{verbatim}
+{\Huge
+\[
+  \int_0^1 {\frac{\sqrt x}{2}dx} 
+\]
+}
+\end{verbatim} 
+\end{minipage} 
+\begin{minipage}[t]{0.5\textwidth}
+{\Huge
+\[
+  \int_0^1 {\frac{\sqrt x}{2}dx} 
+\]
+} 
+\end{minipage} 
+
+Para fontes maiores ainda usamos o pacote \texttt{graphicx} que permite uma escala na expressão matemática em qualquer tamanho. Use o comando \verb|\scalebox{ }|.
+
+\begin{verbatim}
+\[
+  \scalebox{5}{
+    $\displaystyle\int_0^1 {\frac{\sqrt x}{2}dx}$
+  }
+\]
+\end{verbatim}
+\[
+  \scalebox{5}{
+    $\displaystyle\int_0^1 {\frac{\sqrt x}{2}dx}$
+  }
+\]
+
+Baixe {fonte\_grande.tex}.
+
+
+
+\section{Alfabeto grego no modo texto}
+
+É comum usar o alfabeto grego no modo matemático, mas com o pacote \href{http://ctan.tche.br/macros/latex/contrib/textgreek/textgreek.pdf}{\texttt{textgreek}} é possível inserir as letras gregas no modo texto. Veja um exemplo:
+
+\verb|\textalpha, \textbeta, \textgamma|
+
+
+
+\section{pifont}
+
+\texttt{pifont} é um pacote que usa símbolos com uma funcionalidade especial.
+
+Digitando \verb|\ding{38}| retorna \ding{38}. Veja mais dois exemplos: \ding{73} 1978 \ding{61} 2012.
+
+Com o ambiente \texttt{dinglist} podemos criar uma lista personalizada.
+
+\
+
+\begin{minipage}[T]{.45\textwidth}
+\begin{verbatim}
+\begin{dinglist}{43}
+ \item um
+ \item dois
+ \item tres
+\end{dinglist}
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[T]{.45\textwidth}
+\begin{dinglist}{43}
+ \item um
+ \item dois
+ \item tres
+\end{dinglist}
+\end{minipage}
+
+\
+
+\
+
+\verb|\begin{dinglist}{51}|
+
+\begin{dinglist}{51}
+ \item 3 ovos
+\end{dinglist}
+
+\verb|\begin{dinglist}{55}|
+
+\begin{dinglist}{55}
+ \item 100 g de sal
+\end{dinglist}
+
+Com o comando \texttt{dingautolist} podemos criar uma lista onde a numeração dos símbolos aumenta a cada item.
+
+\begin{minipage}[T]{.45\textwidth}
+\begin{verbatim}
+\begin{dingautolist}{192}
+ \item um
+ \item dois
+ \item três
+ \item quatro
+ \item cinco
+ \item seis
+ \item sete
+ \item oito
+ \item nove
+ \item dez
+\end{dingautolist}
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[T]{.45\textwidth}
+\begin{dingautolist}{192}
+ \item um
+ \item dois
+ \item três
+ \item quatro
+ \item cinco
+ \item seis
+ \item sete
+ \item oito
+ \item nove
+ \item dez
+\end{dingautolist}
+\end{minipage}
+
+\newpage 
+
+Veja a tabela com os símbolos do \texttt{pifont}.
+
+\begin{table}[h]
+ \centering
+  \begin{tabular}{|cc|cc|cc|cc|cc|cc|cc|cc|}
+  \hline
+32	&	\ding{32}	& 33	&	\ding{33}	&	34	&	\ding{34}	&	35	&	\ding{35}	&	36	&	\ding{36}	&	37	&	\ding{37}	&	38	&	\ding{38}	&	39	& \ding{39} \\ \hline
+40	&	\ding{40}	&	41	&	\ding{41}	&	42	&	\ding{42}	&	43	&	\ding{43}	&	44	&	\ding{44}	&	45	&	\ding{45}	&	46	&	\ding{46}	&	47	&	\ding{47}  \\ \hline
+48	&	\ding{48}	&	49	&	\ding{49}	&	50	&	\ding{50}	&	51	&	\ding{51}	&	52	&	\ding{52}	&	53	&	\ding{53}	&	54	&	\ding{54}	&	55	&	\ding{55} \\ \hline
+56	&	\ding{56}	&	57	&	\ding{57}	&	58	&	\ding{58}	&	59	&	\ding{59}	&	60	&	\ding{60}	&	61	&	\ding{61}	&	62	&	\ding{62}	&	63	&	\ding{63} \\ \hline
+64	&	\ding{64}	&	65	&	\ding{65}	&	66	&	\ding{66}	&	67	&	\ding{67}	&	68	&	\ding{68}	&	69	&	\ding{69}	&	70	&	\ding{70}	&	71	&	\ding{71} \\ \hline
+72	&	\ding{72}	&	73	&	\ding{73}	&	74	&	\ding{74}	&	75	&	\ding{75}	&	76	&	\ding{76}	&	77	&	\ding{77}	&	78	&	\ding{78}	&	79	&	\ding{79} \\ \hline
+80	&	\ding{80}	&	81	&	\ding{81}	&	82	&	\ding{82}	&	83	&	\ding{83}	&	84	&	\ding{84}	&	85	&	\ding{85}	&	86	&	\ding{86}	&	87	&	\ding{87} \\ \hline
+88	&	\ding{88}	&	89	&	\ding{89}	&	90	&	\ding{90}	&	91	&	\ding{91}	&	92	&	\ding{92}	&	93	&	\ding{93}	&	94	&	\ding{94}	&	95	&	\ding{95} \\ \hline
+96	&	\ding{96}	&	97	&	\ding{97}	&	98	&	\ding{98}	&	99	&	\ding{99}	&	100	&	\ding{100}	&	101	&	\ding{101}	&	102	&	\ding{102}	&	103	&	\ding{103} \\ \hline
+104	&	\ding{104}	&	105	&	\ding{105}	&	106	&	\ding{106}	&	107	&	\ding{107}	&	108	&	\ding{108}	&	109	&	\ding{109}	&	110	&	\ding{110}	&	111	&	\ding{111} \\ \hline
+112	&	\ding{112}	&	113	&	\ding{113}	&	114	&	\ding{114}	&	115	&	\ding{115}	&	116	&	\ding{116}	&	117	&	\ding{117}	&	118	&	\ding{118}	&	119	&	\ding{119} \\ \hline
+120	&	\ding{120}	&	121	&	\ding{121}	&	122	&	\ding{122}	&	123	&	\ding{123}	&	124	&	\ding{124}	&	125	&	\ding{125}	&	126	&	\ding{126}	&		&	 \\ \hline
+	&		&	161	&	\ding{161}	&	162	&	\ding{162}	&	163	&	\ding{163}	&	164	&	\ding{164}	&	165	&	\ding{165}	&	166	&	\ding{166}	&	167	&	\ding{167} \\ \hline
+168	&	\ding{168}	&	169	&	\ding{169}	&	170	&	\ding{170}	&	171	&	\ding{171}	&	172	&	\ding{172}	&	173	&	\ding{173}	&	174	&	\ding{174}	&	175	&	\ding{175} \\ \hline
+176	&	\ding{176}	&	177	&	\ding{177}	&	178	&	\ding{178}	&	179	&	\ding{179}	&	180	&	\ding{180}	&	181	&	\ding{181}	&	182	&	\ding{182}	&	183	&	\ding{183} \\ \hline
+184	&	\ding{184}	&	185	&	\ding{185}	&	186	&	\ding{186}	&	187	&	\ding{187}	&	188	&	\ding{188}	&	189	&	\ding{189}	&	190	&	\ding{190}	&	191	&	\ding{191} \\ \hline
+192	&	\ding{192}	&	193	&	\ding{193}	&	194	&	\ding{194}	&	195	&	\ding{195}	&	196	&	\ding{196}	&	197	&	\ding{197}	&	198	&	\ding{198}	&	199	&	\ding{199} \\ \hline
+200	&	\ding{200}	&	201	&	\ding{201}	&	202	&	\ding{202}	&	203	&	\ding{203}	&	204	&	\ding{204}	&	205	&	\ding{205}	&	206	&	\ding{206}	&	207	&	\ding{207} \\ \hline
+208	&	\ding{208}	&	209	&	\ding{209}	&	210	&	\ding{210}	&	211	&	\ding{211}	&	212	&	\ding{212}	&	213	&	\ding{213}	&	214	&	\ding{214}	&	215	&	\ding{215} \\ \hline
+216	&	\ding{216}	&	217	&	\ding{217}	&	218	&	\ding{218}	&	219	&	\ding{219}	&	220	&	\ding{220}	&	221	&	\ding{221}	&	222	&	\ding{222}	&	223	&	\ding{223} \\ \hline
+224	&	\ding{224}	&	225	&	\ding{225}	&	226	&	\ding{226}	&	227	&	\ding{227}	&	228	&	\ding{228}	&	229	&	\ding{229}	&	230	&	\ding{230}	&	231	&	\ding{231} \\ \hline
+232	&	\ding{232}	&	233	&	\ding{233}	&	234	&	\ding{234}	&	235	&	\ding{235}	&	236	&	\ding{236}	&	237	&	\ding{237}	&	238	&	\ding{238}	&	239	&	\ding{239} \\ \hline
+	&		&	241	&	\ding{241}	&	242	&	\ding{242}	&	243	&	\ding{243}	&	244	&	\ding{244}	&	245	&	\ding{245}	&	246	&	\ding{246}	&	247	&	\ding{247} \\ \hline
+248	&	\ding{248}	&	249	&	\ding{249}	&	250	&	\ding{250}	&	251	&	\ding{251}	&	252	&	\ding{252}	&	253	&	\ding{253}	&	254	&	\ding{254}	&		&	 \\ \hline
+  \end{tabular}
+  \caption{Os caracteres na fonte PostScript Zapf Dingbats}
+\end{table}
+
+\section{Catálogo de fontes}
+
+% texdoc fontname
+
+% COLOCAR O LINK DE CADA FONTE.
+
+Vejamos alguns exemplos do site \href{http://www.tug.dk/FontCatalogue/}{The \LaTeX\ Font Catalogue}.
+
+O site agrupa as fontes por categorias. Veremos apenas algumas fontes.
+
+Para cada exemplo, o site mostra como usar a fonte no documento todo, geralmente carregando um pacote, mas no arquivo \href{}{font\_catalogue.tex} veremos como usar a \textbf{família} da fonte apenas num texto selecionado.
+
+
+
+
+
+Baixe \href{}{fonte\_catalogue.tex}.
+
+
+\section{Instalando novas fontes}
+
+
+\subsection{Instalando fontes não free no Linux}
+
+http://tex.stackexchange.com/a/22162/1940
+
+Baixe install-getnonfreefonts
+http://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+
+% $sudo texlua install-getnonfreefonts
+
+% ou
+
+% $wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+% $sudo texlua install-getnonfreefonts
+
+% Atualize
+% sudo mktexlsr
+
+% Falhou
+% Testando
+% tex testfont #ou pdftex testfont
+% digite o nome da fonte
+
+% Tente
+% kpsewhich luximono.map
+
+
+
+Instalando luximono
+
+sudo getnonfreefonts-sys luximono
+
+Veja a lista de fontes que podem ser instaladas.
+getnonfreefonts -l
+
+\subsection{Instalando mais algumas fontes no LaTeX}
+
+Instalando Garamond
+
+sudo mkdir /usr/local/texlive/2012/texmf-dist/fonts/afm/urw/garamond
+sudo cp *.afm /usr/local/texlive/2012/texmf-dist/fonts/afm/urw/garamond
+sudo mkdir /usr/local/texlive/2012/texmf-dist/fonts/type1/urw/garamond
+sudo cp *.pfb /usr/local/texlive/2012/texmf-dist/fonts/type1/urw/garamond
+sudo texhash /usr/local/texlive/2012/texmf-dist
+
+
+
+\subsection{Instalando fontes no Linux}
+
+Instalando fonte Linotype Zapfino Three no Linux
+
+http://font.downloadatoz.com/font,11544,linotypezapfino-three.html
+
+O modo mais simples é clicando no arquivo baixado LinotypeZapfino Three.ttf e ao abrir o visualizador de fontes clicar em Instalar
+
+figura do visualizador de fontes
+
+% + site: http://howtoubuntu.org/how-to-install-fonts-in-ubuntu/
+
+OU via terminal
+
+- Descompacte e crie uma subpasta em /usr/share/fonts/truetype/
+mkdir /usr/share/fonts/truetype/linotypeZapfino
+
+Copie o arquivo LinotypeZapfino Three.ttf para a pasta criada
+sudo cp Downloads/LinotypeZapfino\ Three.ttf /usr/share/fonts/truetype/linotypeZapfino/
+
+
+ou 
+
+mkdir /usr/share/fonts/truetype/customfonts
+
+e copie todas as fontes que deseja instalar para esta pasta
+
+sudo cp *.ttf /usr/share/fonts/truetype/customfonts/
+
+Depois atualize a lista de fontes
+fc-cache -fv
+
+Se quiser listar a fonte LinotypeZapfino instalada digite
+fc-list | grep -i linotype
+
+
+Instalando fonte xkcd
+wget http://simonsoftware.se/other/xkcd.ttf
+
+Instalando fonte xkcd
+wget http://simonsoftware.se/other/xkcd.ttf
+
+% 
+% http://tex.stackexchange.com/questions/19898/getting-urw-garamond-and-the-license
+% 
+% instalar:
+% covfonts
+% malvern
+% EMERALD
+% vicent
+% punk
+% Segment Font
+% vivaldi
+
+% tentar instalar na força bruta
+% instalar mais fontes ttf de outros lugares
+
+
+
+\section{Ligaduras}
+
+\href{http://pt.wikipedia.org/wiki/Ligadura_tipográfica}{Ligaduras} ocorrem quando duas ou mais letras são unidas em um único glifo. Para ignorar essas ocorrências use o comando \verb|\mbox{}|.
+
+\verb|\Huge fi ff ffi fl|
+
+{\Huge fi ff ffi fl}
+
+\verb|f\mbox{}i f\mbox{}f f\mbox{}f\mbox{}i f\mbox{}l|
+
+{\Huge f\mbox{}i f\mbox{}f f\mbox{}f\mbox{}i f\mbox{}l
+
+filosofia
+
+f\mbox{}ilosof\mbox{}ia}
+
+
+
+
+% ver mais fontes decorativas
+% fontes caligraficas para texto de capitulo
+% iniciais bem desenhadas
+
+
+
+
+% 
+% 
+% frase:
+% \frase
+% 
+% 
+% A vida só pode ser compreendida olhando-se para trás, mas só pode ser vivida olhando-se para frente. (Johnnie Walker)
+% 
+% 
+% 
+% - história de cada tópico (intro) em 'fntguide'
+% 
+% 
+% 
+% 
+% \href{http://ctan.tche.br/macros/latex/required/psnfss/psnfss2e.pdf}{Using common PostScript fonts with LaTeX} ou texdoc psnfss2e
+% -> tabela com as fontes mais comuns do LaTeX
+% 
+% colocar o link no final do post
+% \href{http://pessoa.fct.unl.pt/p110371/nuno/category/typography/}{Tipografia (especificações técnicas de uma caixa de texto)}
+% 
+% 
+% 
+% \href{http://ctan.tche.br/info/fontsampler/sampler.pdf}{fontes disponíveis no TeXLive}
+% \href{http://suppiya.files.wordpress.com/2008/02/latex_fonts.pdf}{LaTeX Fonts} de Ki-Joo Kim
+% \href{http://linorg.usp.br/CTAN/info/symbols/comprehensive/symbols-a4.pdf}{symbols} de Scott Pakin
+% \href{}{}
+% 
+% 
+% % a nice font for the title
+% \usepackage[sf]{vivaldi}
+% 
+% microtype
+% 
+% Referências
+% 
+% 
+% texdoc classes
+% 
+% \fontencoding{T1}
+% \fontfamily{garamond}
+% \fontseries{m}
+% \fontshape{it}
+% \fontsize{12}{15}
+% \selectfont
+% 
+% 
+% 
+% Outras fontes
+% 
+% ver as fontes do psnfss2e pág. 8, lista-las e fazer exemplos. - OK
+% 
+% - testar as fontes do sistema e ver quais são as fontes instaladas no ubuntu - OK
+% 
+% 
+% texdoc mathalfa
+% mathdesign
+% 
+% http://ctan.tche.br/help/Catalogue/entries/helvet.html
+% http://www.tug.dk/FontCatalogue/helvetica/
+% 
+% http://www.tug.org/fontname/html/Standard-PostScript-fonts.html
+% 
+% \href{http://www.tug.dk/FontCatalogue/}{The \LaTeX{} Font Catalogue}
+% % \href{http://www.tug.dk/FontCatalogue/helvetica/}{helvetica}
+% \href{http://ctan.tche.br/help/Catalogue/entries/helvet.html}{helvet}
+% 
+% \href{http://www.tug.org/fontname/html/Standard-PostScript-fonts.html}{PostScript-fonts}
+
+% LER ESTE SITE
+% \href{http://tex.stackexchange.com/questions/56851/how-to-use-fonts-that-need-different-fontenc-together}{}
+% sobre letrine
+% 
+% \href{}{}
+% \href{http://linorg.usp.br/CTAN/macros/latex/doc/fntguide.pdf}{LaTeX2e font selection} ou texdoc fntguide
+% \href{http://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf}{Font selection in LATEX: The most frequently asked questions}
+% \href{http://tug.org/fonts/}{Fonts and TeX}
+% (1) \href{http://en.wikibooks.org/wiki/LaTeX/Text_Formatting}{Wikibooks fonts}
+% \href{http://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document/25251#25251}{Finding the font name (TeX.SX)}
+% \href{http://www.forkosh.com/pstex/latexcommands.htm}{LaTeX Fonts Commands}
+% \href{http://tex.stackexchange.com/a/25251/1940}{Restricting the scope of the selection}
+
+% \href{http://www.tecepe.eng.br/blog/tex/latex/latex-codificacao-de-entrada-e-de-saida}{LaTeX - Codificação de entrada e de saída}
+
+%\href{}{mathmode}
+% \href{}{}
+
+% VER http://ctan.tche.br/help/Catalogue/bytopic.html#fontsgraph
+
+%% SER SE CONSEGUE COLOCAR CONCRETE E IWONA NOVAMENTE COM UMA DECLARAÇÃO PARTICULAR PARA AS EXPRESSÕES MATEMÁTICAS.
+
+%% REVER A FONTE PADRÃO DESTE DOCUMENTO. TALVEZ TROCAR POR OUTRA. VER AS DA MEMOIR.
+
+%% VER rodos os renewcommand em fntguide.
+
+%% CRIAR UM fonte_modelo.tex com todos os comandos.
+
+%% http://tex.stackexchange.com/a/74881/1940
+
+%% http://packages.ubuntu.com/hardy/texlive-fonts-extra
+
+%% http://www.fontsquirrel.com/fonts/list/50/800
+
+%% http://en.kioskea.net/faq/1140-installing-truetype-fonts-under-ubuntu
+
+%% http://font.downloadatoz.com/download,11563,linotypezapfino-two-for-linux.html
+
+%% http://ilovetypography.com/
+
+%% http://linorg.usp.br/CTAN/macros/latex/contrib/fontspec/fontspec.pdf
+
+%% http://www.pctex.com/mtpro2.html
+
+%% http://nitens.org/taraborelli/latex
+
+%% falar sobre ligaduras
+
+% Palavras-chave: Tipografia, Fontes, trabalhando com fontes no LaTeX, editando fontes no LaTeX.
+
+\end{document}

@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{pgffor}
+
+\newcommand{\fontepequena}[1]{{\tiny #1}}
+\newcommand{\fontegrande}[1]{{\Huge #1}}
+% define o tamanho da fonte numericamente, <baselineskip> = 12pt por padrao
+\newcommand{\tamanho}[3][12pt]{
+  {{\fontsize{#2}{#1}\selectfont #3}}
+}
+
+\begin{document}
+
+{\tiny tiny}
+
+{\scriptsize scriptsize}
+
+{\footnotesize footnotesize}
+
+{\small small}
+
+{\normalsize normalsize}
+
+{\large large}
+
+{\Large Large}
+
+{\LARGE LARGE}
+
+{\huge huge}
+
+{\Huge Huge}
+
+\fontepequena{Texto pequeno} \fontegrande{Texto grande}
+
+\
+
+\tamanho{10}{Texto com novo comando}
+
+\tamanho{10}{Texto com novo comando}
+
+\tamanho{16}{Texto com novo comando}
+
+\tamanho{16}{Texto com novo comando}
+
+\tamanho[19.2]{16}{Texto com novo comando}
+
+\tamanho[19.2]{16}{Texto com novo comando}
+
+hahaha
+
+\
+
+\fontsize{10}{8}\selectfont
+
+texto normal com espaçamento reduzido
+
+texto normal com espaçamento reduzido
+
+\fontsize{10}{12}\selectfont
+
+texto normal
+
+texto normal
+
+\fontsize{10}{20}\selectfont
+
+texto normal com espaçamento duplo entre linhas
+
+texto normal com espaçamento duplo entre linhas
+
+\fontsize{23}{27.6}\selectfont
+
+texto grande
+
+texto grande
+
+\newpage
+
+\foreach \n in {5,6,7,8,9,10,11,12,14,16,20,23,28,33}{
+  {\fontsize{\n}{1.2\n}\selectfont \n \ paralelepipedo \par}
+}
+
+\tamanho{20}{Texto grande duas vezes.}
+
+\normalsize
+
+Texto normal.
+
+\end{document}

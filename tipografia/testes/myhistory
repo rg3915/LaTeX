@@ -1,0 +1,6 @@
+wget mirrors.ctan.org/fonts/emerald.zip
+unzip emerald.zip 
+sudo cp -r emerald/. /usr/local/share/texmf/
+kpsewhich --var-value TEXMFLOCAL
+sudo -H mktexlsr
+sudo texhash

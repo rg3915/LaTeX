@@ -1,0 +1,39 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{helvet}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=3cm]{geometry}
+
+\newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez}
+
+% Adobe Helvetica
+\renewcommand\familydefault{\sfdefault}
+
+\pagestyle{empty}
+\begin{document}
+
+Para usar a fonte Adobe Helvetica em todo o documento digite no preâmbulo
+
+\begin{verbatim}
+  \usepackage{helvet}
+  \renewcommand\familydefault{\sfdefault}
+\end{verbatim}
+
+
+Compare as duas famílias a seguir:
+
+\subsection*{Adobe Helvetica normal}
+\frase
+
+\subsection*{Adobe Helvetica itálico}
+\textit{\frase}
+
+\subsection*{Adobe Helvetica negrito}
+\textbf{\frase}
+
+\subsection*{Computer Modern Sans}
+{\fontfamily{cmss}\selectfont
+\frase}
+
+\end{document}

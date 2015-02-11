@@ -1,0 +1,5 @@
+sudo mkdir /usr/local/texlive/2012/texmf-dist/fonts/afm/urw/garamond
+sudo cp *.afm /usr/local/texlive/2012/texmf-dist/fonts/afm/urw/garamond
+sudo mkdir /usr/local/texlive/2012/texmf-dist/fonts/type1/urw/garamond
+sudo cp *.pfb /usr/local/texlive/2012/texmf-dist/fonts/type1/urw/garamond
+sudo texhash /usr/local/texlive/2012/texmf-dist

@@ -1,0 +1,28 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=3cm]{geometry}
+
+\newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez}
+
+% Adobe Helvetica
+\renewcommand\familydefault{phv}
+
+\pagestyle{empty}
+\begin{document}
+
+\subsection*{Adobe Helvetica normal}
+\frase
+
+\subsection*{Adobe Helvetica itálico}
+\textit{\frase}
+
+\subsection*{Adobe Helvetica negrito}
+\textbf{\frase}
+
+\subsection*{Computer Modern Sans}
+{\fontfamily{cmss}\selectfont
+\frase}
+
+\end{document}

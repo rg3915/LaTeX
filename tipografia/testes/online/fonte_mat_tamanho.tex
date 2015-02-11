@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{indentfirst}
+\usepackage[margin=2cm]{geometry}
+
+\newcommand{\funcaoint}{
+  f(t) = \frac{T}{2\pi} \int{\frac{1}{\sin\frac{\omega}{t}}}dt
+}
+
+\newcommand{\pol}{
+  p(x) = a_0 + a_1 x + a_2 x^2 + \ldots + a_n x^n
+}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\section*{Tamanho de fontes matemáticas}
+
+$\funcaoint$ \hfill padrão
+
+$\displaystyle\funcaoint$ \hfill \verb|\displaystyle|
+
+$\scriptstyle\funcaoint$ \hfill \verb|\scriptstyle|
+
+$\scriptscriptstyle\funcaoint$ \hfill \verb|\scriptscriptstyle|
+
+$\textstyle\funcaoint$ \hfill \verb|\textstyle|
+
+$\scriptscriptstyle \pol$ \hfill \verb|\scriptscriptstyle|
+
+$\scriptstyle \pol$ \hfill \verb|\scriptstyle|
+
+{\tiny $\pol$} \hfill \verb|\tiny|
+
+{\scriptsize $\pol$} \hfill \verb|\scriptsize|
+
+{\footnotesize $\pol$} \hfill \verb|\footnotesize|
+
+{\small $\pol$} \hfill \verb|\small|
+
+$\pol$ \hfill \verb|padrão|
+
+$\displaystyle \pol$ \hfill \verb|\displaystyle|
+
+{\normalsize $\pol$} \hfill \verb|\normalsize|
+
+{\large $\pol$} \hfill \verb|\large|
+
+{\Large $\pol$} \hfill \verb|\Large|
+
+{\LARGE $\pol$} \hfill \verb|\LARGE|
+
+{\huge $\pol$} \hfill \verb|\huge|
+
+{\Huge $\pol$} \hfill \verb|\Huge|
+
+
+\end{document}

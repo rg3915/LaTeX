@@ -1,0 +1,42 @@
+% fontes do windows
+% compile usando
+% xelatex fonte_win
+% ou
+% latexmk -xelatex fonte_win
+\documentclass[a4paper,12pt]{article}
+\usepackage{lipsum,fontspec,setspace}
+\usepackage[cm]{fullpage}
+
+\setmainfont{Verdana}
+\onehalfspacing
+
+\begin{document}
+
+\subsection*{Verdana}
+\lipsum[1]
+
+\subsection*{Brush Script MT}
+\fontspec{Brush Script MT}
+\lipsum[1]
+
+\subsection*{Harlow Solid Italic}
+\fontspec{Harlow Solid Italic}
+\lipsum[1]
+
+\subsection*{Impact}
+\fontspec{Impact}
+\lipsum[1]
+
+\subsection*{Mistral}
+\fontspec{Mistral}
+\lipsum[1]
+
+%\subsection*{Swis721 BlkOul BT}
+%\fontspec{Swis721 BlkOul BT}
+%\lipsum[1]
+
+\subsection*{Vivaldi}
+\fontspec{Vivaldi}
+\lipsum[1]
+
+\end{document}

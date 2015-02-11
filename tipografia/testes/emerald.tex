@@ -1,0 +1,21 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{emerald}
+\usepackage{lipsum}
+\newcommand{\frase}{The quick brown fox jumps over the sleazy dog}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\subsection*{\textbackslash normalfont}
+\ECFTeenSpirit
+\frase
+
+\subsection*{\textbackslash Computer Modern Family}
+{\usefont{T1}{cmr}{n}{n}
+\frase
+
+
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{lipsum}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\newcommand{\frase}{Tem Abelhas Bexiga Que Coelho Fugitivo fumaça Major Xadrez}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\subsection*{\textbackslash normalfont}
+\frase
+
+\subsection*{\textbackslash Computer Modern Family}
+{\usefont{T1}{cmr}{n}{n}
+\frase
+
+\subsection*{\textbackslash normalfont}
+{\normalfont\normalfont
+\frase
+
+\subsection*{\textbackslash Adobe Helvetica}
+{\usefont{T1}{phv}{}{}
+\frase
+
+\subsection*{\textbackslash slshape}
+{\normalfont\slshape
+\frase
+
+\end{document}

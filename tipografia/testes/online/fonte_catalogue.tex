@@ -1,0 +1,1215 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[B1,T1]{fontenc}
+\usepackage[brazil]{babel}
+% \usepackage{parskip}
+\usepackage{hyperref}
+\hypersetup{pdfview = FitBH,pdfstartview = FitBH}
+\usepackage{lipsum,xcolor}
+\usepackage{lxfonts,ascii,aurical,auncial,bbold,lettrine,duerer}
+\usepackage[margin=3cm]{geometry}
+
+\renewcommand{\LettrineFontHook}{\initfamily}
+
+%*************
+\DeclareMathVersion{arev}
+
+\SetSymbolFont{operators}    {arev}{OT1}{zavm}{m}{n}
+\SetSymbolFont{letters}      {arev}{OML}{zavm}{m}{it}
+\SetSymbolFont{symbols}      {arev}{OMS}{zavm}{m}{n}
+\SetSymbolFont{largesymbols} {arev}{OMX}{mdbch}{m}{n}
+\SetMathAlphabet{\mathnormal}{arev}{OML}{zavm}{m}{it}
+\SetMathAlphabet{\mathit}    {arev}{OML}{zavm}{m}{it}
+\SetMathAlphabet{\mathrm}    {arev}{OT1}{zavm}{m}{n}
+\SetMathAlphabet{\mathsf}    {arev}{OML}{zavm}{m}{it}
+\SetMathAlphabet{\mathbf}    {arev}{OT1}{zavm}{b}{n}
+\SetMathAlphabet{\mathtt}    {arev}{T1} {fvm} {m}{n}
+%*************
+\DeclareMathVersion{kurier}
+\DeclareMathVersion{kurierbold}
+
+\SetSymbolFont{operators}    {kurier}{OT1}{kurier}{m}{n}
+\SetSymbolFont{letters}      {kurier}{OML}{kurier} {m}{it}
+\SetSymbolFont{symbols}      {kurier}{OMS}{kurier}{m}{n}
+\SetSymbolFont{largesymbols} {kurier}{OMX}{kurier}{m}{n}
+\SetSymbolFont{operators}    {kurierbold}{OT1}{kurierbold} {b}{n}
+\SetSymbolFont{letters}      {kurierbold}{OML}{kurierbold} {b}{it}
+\SetSymbolFont{symbols}      {kurierbold}{OMS}{kurierbold}{b}{n}
+\SetSymbolFont{largesymbols} {kurierbold}{OMX}{kurierbold}{b}{n}
+\SetMathAlphabet{\mathbf}    {kurier}{OT1}{kurier}{bx}{n}
+\SetMathAlphabet{\mathsf}    {kurier}{OT1}{kurier}{m}{n}
+\SetMathAlphabet{\mathit}    {kurier}{OT1}{kurier}{m}{it}
+\SetMathAlphabet{\mathtt}    {kurier}{OT1}{kurier}{m}{n}
+\SetMathAlphabet\mathsf      {kurierbold}{OT1}{kurierbold}{bx}{n}
+\SetMathAlphabet\mathit      {kurierbold}{OT1}{kurierbold}{bx}{it}
+%*************
+
+% \newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez}
+
+\newcommand{\frase}{The quick brown fox jumps over the sleazy dog}
+
+\newcommand{\tipo}{TIPOGRAFIA}
+
+% \newcommand{\funcaoint}{
+%   f(t) = \frac{T}{2\pi} \int{\frac{1}{\sin\frac{\omega}{t}}}dt
+% }
+
+\newcommand{\funcaoint}{
+  \mathbf{B}(P)=\frac{\mu_0}{4\pi}\int\frac{\mathbf{I}\times\hat{r}'}{r'^2}dl = \frac{\mu_0}{4\pi}\,I\!\int\frac{dl\times\hat{r}'}{r'^2}
+}
+
+% Fonte padrao Computer Modern Roman
+\renewcommand\familydefault{cmr}
+% Fonte padrao para typewriter
+\renewcommand*\ttdefault{cmtt}
+
+% familia
+\newcommand{\fonte}[2]{
+  {\fontfamily{#1}\selectfont #2}
+}
+
+\parindent=0pt
+\pagestyle{empty}
+%*******************************************************************
+\begin{document}
+
+Fontes descritas em \href{http://www.tug.dk/FontCatalogue/}{The \LaTeX\ Font Catalogue}.
+
+\section*{Fontes com suporte matemático}
+
+Se for usar no \textbf{documento todo} carregue \verb|\usepackage{pacote}|.
+
+Se for usar apenas num \textbf{texto selecionado} use a família \texttt{familia}.
+
+Usaremos a frase \href{http://pt.wikipedia.org/wiki/The_quick_brown_fox_jumps_over_the_lazy_dog}{The quick brown fox jumps over the sleazy dog} por ser um \href{http://pt.wikipedia.org/wiki/Pangrama}{pangrama} utilizado nos exemplos do site para efeito de comparação.
+
+Para todos os exemplos a seguir usaremos os seguintes comandos (considerando apenas um texto selecionado):
+
+\begin{verbatim}
+\newcommand{\frase}{The quick brown fox jumps over the sleazy dog}
+\newcommand{\fonte}[2]{{\fontfamily{#1}\selectfont #2}}
+\fonte{familia}{\frase}
+\emph{\fonte{familia}{\frase}}
+\textbf{\fonte{familia}{\frase}}
+{\mathversion{familia}$\funcaoint$}
+\end{verbatim}
+
+\textbf{Obs}: Usaremos \verb|\usepackage[T1]{fontenc}| por padrão. Mas existem fontes com saída \verb|[OT1]| ou \verb|[B1]|. Só que os dois últimos geralmente dão conflito, é recomendável que use somente um deles.
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/arev/}{Arev}}
+
+\begin{verbatim}
+\usepackage{arev}
+\usepackage[T1]{fontenc}
+\end{verbatim}
+
+Família: \texttt{fav}
+
+\verb|\fonte{fav}{\frase}|
+
+\
+
+Para configurar a fonte \texttt{arev} para o \textit{modo matemático} é necessário digitar o seguinte código no preâmbulo (isto não será necessário caso você carregue o pacote):
+
+\begin{verbatim}
+\DeclareMathVersion{arev}
+
+\SetSymbolFont{operators}    {arev}{OT1}{zavm}{m}{n}
+\SetSymbolFont{letters}      {arev}{OML}{zavm}{m}{it}
+\SetSymbolFont{symbols}      {arev}{OMS}{zavm}{m}{n}
+\SetSymbolFont{largesymbols} {arev}{OMX}{mdbch}{m}{n}
+\SetMathAlphabet{\mathnormal}{arev}{OML}{zavm}{m}{it}
+\SetMathAlphabet{\mathit}    {arev}{OML}{zavm}{m}{it}
+\SetMathAlphabet{\mathrm}    {arev}{OT1}{zavm}{m}{n}
+\SetMathAlphabet{\mathsf}    {arev}{OML}{zavm}{m}{it}
+\SetMathAlphabet{\mathbf}    {arev}{OT1}{zavm}{b}{n}
+\SetMathAlphabet{\mathtt}    {arev}{T1} {fvm} {m}{n}
+\end{verbatim}
+
+E então digitar
+
+\verb|{\mathversion{arev}$\funcaoint$}|
+
+\
+
+{\mathversion{arev}\[\funcaoint\]}
+
+Veja \href{}{arev.tex}
+
+\newpage 
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/gfsartemisia/}{GFS Artemisia}}
+
+\begin{verbatim}
+\usepackage{gfsartemisia}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{artemisia}
+
+\fonte{artemisia}{\frase}
+
+\hspace{-1ex}\emph{\fonte{artemisia}{\frase}}
+
+\hspace{-1ex}\textsc{\fonte{artemisia}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{artemisia}{\frase}}
+
+O modo matemático de \textit{GFS Artemisia} é o padrão.\footnote{Neste caso a fonte não foi configurada, ou seja, a fonte padrão é \texttt{lxfonts} porque foi carregada no preâmbulo.}
+
+\[
+\funcaoint
+\]
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/kurierl/}{Kurier Light}}
+
+\begin{verbatim}
+\usepackage[light,math]{kurier}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{kurierl}
+
+\fonte{kurierl}{\frase}
+
+\hspace{-1ex}\emph{\fonte{kurierl}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{kurierl}{\frase}}
+
+\begin{verbatim}
+\DeclareMathVersion{kurier}
+\DeclareMathVersion{kurierbold}
+
+\SetSymbolFont{operators}    {kurier}{OT1}{kurier}{m}{n}
+\SetSymbolFont{letters}      {kurier}{OML}{kurier} {m}{it}
+\SetSymbolFont{symbols}      {kurier}{OMS}{kurier}{m}{n}
+\SetSymbolFont{largesymbols} {kurier}{OMX}{kurier}{m}{n}
+\SetSymbolFont{operators}    {kurierbold}{OT1}{kurierbold} {b}{n}
+\SetSymbolFont{letters}      {kurierbold}{OML}{kurierbold} {b}{it}
+\SetSymbolFont{symbols}      {kurierbold}{OMS}{kurierbold}{b}{n}
+\SetSymbolFont{largesymbols} {kurierbold}{OMX}{kurierbold}{b}{n}
+\SetMathAlphabet{\mathbf}{kurier}{OT1}{kurier}{bx}{n}
+\SetMathAlphabet{\mathsf}{kurier}{OT1}{kurier}{m}{n}
+\SetMathAlphabet{\mathit}{kurier}{OT1}{kurier}{m}{it}
+\SetMathAlphabet{\mathtt}{kurier}{OT1}{kurier}{m}{n}
+\SetMathAlphabet\mathsf{kurierbold}{OT1}{kurierbold}{bx}{n}
+\SetMathAlphabet\mathit{kurierbold}{OT1}{kurierbold}{bx}{it}
+\end{verbatim} 
+
+{\mathversion{kurier}\[\funcaoint\]}
+
+\newpage 
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/lxfonts/}{LX Fonts}}
+
+\begin{verbatim}
+\usepackage{lxfonts}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{llcmss}
+
+\textbf{Obs}: É necessário carregar o pacote. Então se quiser que a \textit{Computer Modern Roman} continue como padrão no documento digite \verb|\renewcommand\familydefault{cmr}| no preâmbulo.
+
+\fonte{llcmss}{\frase}
+
+\hspace{-1ex}\emph{\fonte{llcmss}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{llcmss}{\frase}}
+
+\[
+\funcaoint
+\]
+
+\
+
+Veja um slide feito com \href{http://linorg.usp.br/CTAN/fonts/lxfonts/doc/fonts/lxfonts/LXfonts-demo.pdf}{lxfonts (slide)}.
+
+
+
+\section*{Fontes com Serifa}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/antiqua/}{Antiqua}}
+
+\begin{verbatim}
+\usepackage{antiqua}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{uaq}
+
+\fonte{uaq}{\frase}
+
+\fonte{uaq}{1 2 3 4 5 6 7 8 9 0}
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/covfonts/}{Covington}}
+% 
+% \verb|\usepackage{covfonts}|
+% \usepackage[T1]{fontenc}
+% 
+% Família: \texttt{fkt}
+% 
+% \fonte{fkt}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{fkt}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{fkt}{\frase}}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/droidserif/}{Droid Serif}}
+
+\begin{verbatim}
+\usepackage[default]{droidserif}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{fdr}
+
+\fonte{fdr}{\frase}
+
+\hspace{-1ex}\emph{\fonte{fdr}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{fdr}{\frase}}
+
+\fonte{fdr}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/electrum/}{Electrum ADF}}
+
+\begin{verbatim}
+\usepackage[lf]{electrum}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Só funciona no documento todo. Veja o exemplo \href{}{fonte\_electrumadf.tex}.
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/venturisold/}{Venturis ADF Old}}
+
+\begin{verbatim}
+\usepackage{yvo}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{yvo}
+
+\fonte{yvo}{\frase}
+
+\hspace{-1ex}\emph{\fonte{yvo}{\frase}}
+
+\hspace{-1ex}\textsc{\fonte{yvo}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{yvo}{\frase}}
+
+\fonte{yvo}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+
+\section*{Fontes sem Serifa}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/biolinum/}{Biolinum}}
+
+A fonte \texttt{Biolinum} é a fonte padrão do pacote \textit{Libertine Legacy} que desde 2011 só é suportado pelos mecanismos \textit{xetex} e \textit{luatex}. Então no \LaTeX\ use
+
+\begin{verbatim}
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{fxb}
+
+\fonte{fxb}{\frase}
+
+\hspace{-1ex}\emph{\fonte{fxb}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{fxb}{\frase}}
+
+\fonte{fxb}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/comfortaa/}{Comfortaa}}
+
+\begin{verbatim}
+\usepackage[default]{comfortaa}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{fco}
+
+\fonte{fco}{\frase}
+
+\hspace{-1ex}\emph{\fonte{fco}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{fco}{\frase}}
+
+\fonte{fco}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/lato/}{Lato}}
+
+\begin{verbatim}
+\usepackage[default]{lato}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{fla}
+
+\fonte{fla}{\frase}
+
+\hspace{-1ex}\emph{\fonte{fla}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{fla}{\frase}}
+
+\fonte{fla}{1 2 3 4 5 6 7 8 9 0}
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/malvern/}{Malvern}}
+% 
+% Para usar esta fonte digite
+% 
+% \begin{verbatim}
+% \input T1fmv.fd
+% \renewcommand*\sfdefault{fmv}
+% \renewcommand*\familydefault{\sfdefault} %% Somente se a fonte principal do documento for sem serifa.
+% \usepackage[T1]{fontenc}
+% \end{verbatim}
+% 
+% Família: \texttt{}
+% 
+% \fonte{fmv}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{fmv}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{fmv}{\frase}}
+% 
+% \fonte{fmv}{1 2 3 4 5 6 7 8 9 0}
+% 
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/tapir/}{Tapir}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\newfont{\tap}{tap scaled 1200}
+
+\verb|\newfont{\tap}{tap scaled 1200}|
+
+Para usar digite \verb|{\tap \frase}|
+
+{\tap \frase}
+
+{\tap 1 2 3 4 5 6 7 8 9 0}
+
+Não existe o modo itálico e nem negrito.
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/grotesk/}{URW Grotesk}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\renewcommand*\sfdefault{ugq}
+
+\begin{verbatim}
+\renewcommand*\sfdefault{ugq}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{ugq}
+
+\fonte{ugq}{\frase}
+
+\hspace{-1ex}\emph{\fonte{ugq}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{ugq}{\frase}}
+
+\fonte{ugq}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/universal/}{Universal}}
+
+\begin{verbatim}
+\usepackage[default]{uni}
+\usepackage[OT1]{fontenc} %% Universal nao funciona com T1
+\end{verbatim} 
+
+Veja \href{}{fonte\_universal.tex}
+
+
+
+\section*{Fontes máquina de escrever}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/ascii/}{Ascii}}
+
+\begin{verbatim}
+\usepackage{ascii}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+\textbf{Obs}: É necessário carregar o pacote.
+
+Para usar digite \verb|{\normalfont\asciifamily \frase}|.
+
+{\normalfont\asciifamily \frase
+
+1 2 3 4 5 6 7 8 9 0}
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/luximono/}{LuxiMono}}
+% 
+% \begin{verbatim}
+% \usepackage{luximono}
+% % \renewcommand*\familydefault{\ttdefault} %% Somente se a fonte principal do documento for maquina de escrever.
+% \usepackage[T1]{fontenc}
+% \end{verbatim}
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+% 
+% \fonte{}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/txtt/}{TXTT}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\begin{verbatim}
+\renewcommand*\ttdefault{txtt}
+\renewcommand*\familydefault{\ttdefault} %% Somente se a fonte principal do documento
+  for maquina de escrever.
+\usepackage[T1]{fontenc}
+\end{verbatim}
+
+Família: \texttt{txtt}
+
+% \renewcommand*\ttdefault{txtt}
+
+\fonte{txtt}{\frase}
+
+\hspace{-1ex}\textsc{\fonte{txtt}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{txtt}{\frase}}
+
+\fonte{txtt}{1 2 3 4 5 6 7 8 9 0}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/tgcursor/}{\TeX\ Gyre Cursor}}
+
+\begin{verbatim}
+\usepackage{tgcursor}
+\renewcommand*\familydefault{\ttdefault} %% Somente se a fonte principal do documento
+  for maquina de escrever.
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{qcr}
+
+\fonte{qcr}{\frase}
+
+\hspace{-1ex}\emph{\fonte{qcr}{\frase}}
+
+\hspace{-1ex}\textsc{\fonte{qcr}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{qcr}{\frase}}
+
+\fonte{qcr}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\newpage 
+
+\section*{Fontes caligráficas e manuscritas}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/aurical/}{Auriocus Kalligraphicus}}
+
+É necessário carregar o pacote.
+
+\begin{verbatim}
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar num texto selecionado digite
+
+\verb|{\Fontauri{\frase}}|  \hfill {\Fontauri{\frase}}
+
+\verb|{\Fontauri\bfseries{\frase}}| \hfill {\Fontauri\bfseries{\frase}}
+
+\verb|{\Fontlukas{\frase}}| \hfill {\Fontlukas{\frase}}
+
+\verb|{\Fontamici{\frase}}| \hfill {\Fontamici{\frase}}
+
+\verb|{\Fontauri{1 2 3 4 5 6 7 8 9 0}}| \hfill {\Fontauri{1 2 3 4 5 6 7 8 9 0}}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/frcursive/}{French Cursive}}
+
+\begin{verbatim}
+\usepackage[default]{frcursive}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{frc}
+
+\fonte{frc}{\frase}
+
+\hspace{-1ex}\emph{\fonte{frc}{\frase}}
+
+\hspace{-1ex}\textbf{\fonte{frc}{\frase}}
+
+\fonte{frc}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/janaskrivana/}{Jana Skrivana}}
+
+É necessário carregar o pacote.
+
+\begin{verbatim}
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar num texto selecionado digite
+
+\verb|{\Fontskrivan{\frase}}| 
+
+{\Fontskrivan{\frase}}
+
+{\Fontskrivan\bfseries{\frase}}
+
+{\Fontskrivan{1 2 3 4 5 6 7 8 9 0}}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/tgchorus/}{\TeX\ Gyre Chorus}}
+
+\begin{verbatim}
+\usepackage{tgchorus}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{qzc}
+
+\fonte{qzc}{\frase}
+
+\fonte{qzc}{1 2 3 4 5 6 7 8 9 0}
+
+Nota: Esta fonte é idêntica a \textit{Zapf Chancery}.
+
+
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/teenspirit/}{Teen Spirit}}
+% 
+% \verb|\usepackage{emerald}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+% 
+% \fonte{}{1 2 3 4 5 6 7 8 9 0}
+% 
+% 
+% 
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/vicentino/}{Vicentino}}
+% 
+% \verb|\usepackage{vicent}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+% 
+% \fonte{}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+
+
+\section*{Fontes Uncial}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/auncial/}{Artificial Uncial}}
+
+Para usar esta fonte necessário carregar o pacote. Além disso, se você usar dois \texttt{fontenc} no mesmo documento coloque \texttt{B1} primeiro para evitar resultados indesejados nas demais fontes.
+
+\begin{verbatim}
+\usepackage{auncial}
+\usepackage[B1,T1]{fontenc} %% auncial so funciona com B1
+\end{verbatim}
+
+Para usar digite \verb|{\normalfont\aunclfamily \frase}|.
+
+{\normalfont\aunclfamily \frase
+
+1 2 3 4 5 6 7 8 9 0}
+
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/carolmin/}{Carolingan Miniscules}}
+
+\begin{verbatim}
+\usepackage{carolmin}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{cmin}
+
+\fonte{cmin}{\frase}
+
+\hspace{-1ex}\textbf{\fonte{cmin}{\frase}}
+
+\fonte{cmin}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/eiad/}{Eiad}}
+
+\begin{verbatim}
+\newcommand*\eiad{\fontencoding{OT1}\fontfamily{eiad}\selectfont}
+\usepackage[OT1]{fontenc}
+\end{verbatim} 
+
+Família: \texttt{eiad}
+
+\verb|\fonte{eiad}{\frase}|
+
+ou
+
+\verb|{\eiad \frase}|
+
+\
+
+Veja \href{}{fonte\_eiad.tex}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/huncial/}{Half Uncial}}
+
+\begin{verbatim}
+\usepackage{huncial}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\hunclfamily| dentro de \verb|\begin{document}|.
+
+Família: \texttt{huncl}
+
+\fonte{huncl}{\frase}
+
+\fonte{huncl}{1 2 3 4 5 6 7 8 9 0}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/inslrmin/}{Insular Minuscule}}
+
+\begin{verbatim}
+\usepackage{inslrmin}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\iminfamily| dentro de \verb|\begin{document}|.
+
+Família: \texttt{imin}
+
+\fonte{imin}{\frase}
+
+\hspace{-1ex}\textbf{\fonte{imin}{\frase}}
+
+\fonte{imin}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/rustic/}{Roman Rustic}}
+
+\begin{verbatim}
+\usepackage{rustic}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\rustfamily| dentro de \verb|\begin{document}|.
+
+Família: \texttt{rust}
+
+\fonte{rust}{\frase}
+
+\fonte{rust}{1 2 3 4 5 6 7 8 9 0}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/rotunda/}{Rotunda}}
+
+\begin{verbatim}
+\usepackage{rotunda}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\rtndfamily| dentro de \verb|\begin{document}|.
+
+Família: \texttt{rtnd}
+
+\fonte{rtnd}{\frase}
+
+\fonte{rtnd}{1 2 3 4 5 6 7 8 9 0}
+
+
+
+
+\section*{Fontes Blackletter}
+
+Veja \href{http://www.tex.ac.uk/tex-archive/help/Catalogue/entries/yfonts.html}{yfonts} em \href{}{Outras fontes}.
+
+
+\section*{Outras fontes}
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/apicturealfabet/}{A Picture Alphabet}}
+% 
+% \verb|\usepackage{emerald}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/bbold/}{Bbold}}
+
+\begin{verbatim}
+\usepackage{bbold}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\bbfamily| dentro de \verb|\begin{document}|.
+
+Para usar num texto selecionado digite
+
+\verb|\textbb{\frase}|
+
+\textbb{\frase
+
+1 2 3 4 5 6 7 8 9 0}
+
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/decadence/}{Decadence}}
+% 
+% \verb|\usepackage{emerald}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+
+
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/movieola/}{Movieola}}
+% 
+% \verb|\usepackage{emerald}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+
+
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/pookie/}{Pookie}}
+% 
+% \verb|\usepackage{emerald}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+
+
+% INSTALAR
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/punk/}{Punk}}
+% 
+% \verb|\usepackage{punk}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+
+
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/dseg/}{Segment Font}}
+% 
+% Para usar esta fonte digite no preâmbulo:
+% 
+% % \newfont{\dviiseg}{d7seg scaled 1200}
+% 
+% \newfont{\deseg}{deseg scaled 1200}
+% 
+% \verb||
+% 
+% Para usar digite \verb|{\dviiseg \frase}|
+% 
+% % {\dviiseg \frase}
+% 
+% {\deseg \frase}
+% 
+% {\dviiseg 1 2 3 4 5 6 7 8 9 0}
+
+
+
+% \subsection*{\href{http://www.tug.dk/FontCatalogue/webster/}{Webster}}
+% 
+% \verb|\usepackage{emerald}|
+% 
+% Família: \texttt{}
+% 
+% \fonte{}{\frase}
+% 
+% \hspace{-1ex}\emph{\fonte{}{\frase}}
+% 
+% \hspace{-1ex}\textbf{\fonte{}{\frase}}
+
+
+
+\section*{Fontes em caixa alta}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/duerer/}{D\"urer}}
+
+\begin{verbatim}
+\usepackage{duerer}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\durmfamily| dentro de \verb|\begin{document}|.
+
+Família: \texttt{cdr}
+
+{\normalfont\durmfamily
+
+THE QUICK BROWN FOX JUMPS OVER THE SLEAZY DOG}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/foekfont/}{FoekFont}}
+
+\begin{verbatim}
+\usepackage{foekfont}
+\usepackage[T1]{fontenc}
+\end{verbatim} 
+
+Para usar no documento todo digite \verb|\normalfont\foekfamily| dentro de \verb|\begin{document}|.
+
+Família: \texttt{foekfont}
+
+\fonte{foekfont}{THE QUICK BROWN FOX JUMPS OVER THE SLEAZY DOG}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/rfsf/}{Ralph Smith's Formal Script Symbol Fonts}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\newfont{\rsfsten}{rsfs10 scaled 1200}
+\newfont{\rsfsseven}{rsfs10 scaled 1200}
+\newfont{\rsfsfive}{rsfs10 scaled 1200}
+
+\begin{verbatim}
+\newfont{\rsfsten}{rsfs10 scaled 1200}
+\newfont{\rsfsseven}{rsfs10 scaled 1200}
+\newfont{\rsfsfive}{rsfs10 scaled 1200}
+\end{verbatim} 
+
+Para usar digite \verb|{\rsfsten TEXTO}| ou \verb|{\rsfsseven TEXTO}| ou \verb|{\rsfsfive TEXTO}|.
+
+{\rsfsten THE QUICK BROWN FOX JUMPS OVER THE SLEAZY DOG}
+
+
+
+
+\section*{Iniciais decorativas}
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/acorn/}{Acorn Initials}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\input Acorn.fd
+\newcommand*\initfamily{\usefont{U}{Acorn}{xl}{n}}
+
+\begin{verbatim}
+\input Acorn.fd
+\newcommand*\initfamily{\usefont{U}{Acorn}{xl}{n}}
+\end{verbatim} 
+
+Para usar digite \verb|{\initfamily TIPOGRAFIA}|
+
+{\initfamily\Huge \tipo}
+
+{\initfamily\Huge V}eja um exemplo numa frase grande. \lipsum[1]
+
+\
+
+O exemplo fica melhor aplicado se usado da seguinte forma:
+
+\begin{verbatim}
+\usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\initfamily}
+\end{verbatim}
+
+Para usar digite
+
+\begin{verbatim}
+\lettrine[lines=4]{V}{eja} um exemplo numa frase grande. \lipsum[1]
+\end{verbatim}
+
+\noindent onde \verb|lines=4| é o número de linhas que você quer que a letra ocupe. Experimente também usar uma letra colorida, para isso carregue o pacote \texttt{xcolor}.
+
+\begin{verbatim}
+\lettrine[lines=4]{\textcolor{blue}{V}}{eja}           
+\end{verbatim}
+
+\lettrine[lines=4]{\textcolor{blue}{V}}{eja} um exemplo numa frase grande. \lipsum[1]
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/annston/}{Ann Stone}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\input AnnSton.fd
+\renewcommand*\initfamily{\usefont{U}{AnnSton}{xl}{n}}
+
+\begin{verbatim}
+\input AnnSton.fd
+\newcommand*\initfamily{\usefont{U}{AnnSton}{xl}{n}}
+\end{verbatim}
+
+\textbf{Obs}: Caso você tenha dois \verb|\newcommand*\initfamily{}| no mesmo documento digite o segundo como
+
+\verb|\renewcommand*\initfamily{}|, ou use outro nome, exemplo \verb|\newcommand*\initfamilyA{}|.
+
+Para usar digite \verb|{\initfamily TIPOGRAFIA}|
+
+{\initfamily\Huge \tipo}
+
+Veja o exemplo com \texttt{lettrine}.
+
+\begin{verbatim}
+\lettrine[lines=4]{V}{eja} um exemplo numa frase grande. \lipsum[1]
+\end{verbatim}
+
+\lettrine[lines=4]{V}{eja} um exemplo numa frase grande. \lipsum[1]
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/artnouvc/}{Art Nouveau Caps}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\input ArtNouvc.fd
+\renewcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+
+\begin{verbatim}
+\input ArtNouvc.fd
+\newcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+\end{verbatim}
+
+Para usar digite \verb|{\initfamily TIPOGRAFIA}|
+
+{\initfamily\Huge \tipo}
+
+Veja o exemplo com \texttt{lettrine}.
+
+\begin{verbatim}
+\lettrine[lines=4]{V}{eja} um exemplo numa frase grande. \lipsum[1]
+\end{verbatim}
+
+\lettrine[lines=4]{V}{eja} um exemplo numa frase grande. \lipsum[1]
+
+\newpage 
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/artnouv/}{Art Nouveau Initialen}}
+
+Para usar esta fonte digite no preâmbulo:
+
+\input ArtNouv.fd
+\renewcommand*\initfamily{\usefont{U}{ArtNouv}{xl}{n}}
+
+\begin{verbatim}
+\input ArtNouv.fd
+\newcommand*\initfamily{\usefont{U}{ArtNouv}{xl}{n}}
+\end{verbatim}
+
+Para usar digite \verb|{\initfamily TIPOGRAFIA}|
+
+{\initfamily\Huge \tipo}
+
+\
+
+A aplicação dos exemplos a seguir são parecidos com os anteriores.
+
+Para usar digite \verb|{\initfamily TIPOGRAFIA}|
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/baroqueinitials/}{Baroque}}
+
+Veja \href{http://www.tug.dk/FontCatalogue/baroqueinitials/}{Baroque} em \href{}{Outras fontes}.
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/eileenbl/}{Eileen Caps Black}}
+
+\input EileenBl.fd
+\renewcommand*\initfamily{\usefont{U}{EileenBl}{xl}{n}}
+
+\begin{verbatim}
+\input EileenBl.fd
+\newcommand*\initfamily{\usefont{U}{EileenBl}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/elzevier/}{Elzevier Caps Regular}}
+
+\input Elzevier.fd
+\renewcommand*\initfamily{\usefont{U}{Elzevier}{xl}{n}}
+
+\begin{verbatim}
+\input Elzevier.fd
+\newcommand*\initfamily{\usefont{U}{Elzevier}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/konanur/}{Konanur Kaps}}
+
+\input Konanur.fd
+\renewcommand*\initfamily{\usefont{U}{Konanur}{xl}{n}}
+
+\begin{verbatim}
+\input Konanur.fd
+\newcommand*\initfamily{\usefont{U}{Konanur}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/rothdn/}{Rothenburg Decorative}}
+
+\input Rothdn.fd
+\renewcommand*\initfamily{\usefont{U}{Rothdn}{xl}{n}}
+
+\begin{verbatim}
+\input Rothdn.fd
+\newcommand*\initfamily{\usefont{U}{Rothdn}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/royalin/}{Royal Initialen}}
+
+\input RoyalIn.fd
+\renewcommand*\initfamily{\usefont{U}{RoyalIn}{xl}{n}}
+
+\begin{verbatim}
+\input RoyalIn.fd
+\newcommand*\initfamily{\usefont{U}{RoyalIn}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/sanremo/}{San Remo}}
+
+\input Sanremo.fd
+\renewcommand*\initfamily{\usefont{U}{Sanremo}{xl}{n}}
+
+\begin{verbatim}
+\input Sanremo.fd
+\newcommand*\initfamily{\usefont{U}{Sanremo}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/starburst/}{Starburst Regular}}
+
+\input Starburst.fd
+\renewcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
+
+\begin{verbatim}
+\input Starburst.fd
+\newcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/typocaps/}{Typographer Caps}}
+
+\input Typocaps.fd
+\renewcommand*\initfamily{\usefont{U}{Typocaps}{xl}{n}}
+
+\begin{verbatim}
+\input Typocaps.fd
+\newcommand*\initfamily{\usefont{U}{Typocaps}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+
+
+
+\subsection*{\href{http://www.tug.dk/FontCatalogue/zallman/}{Zallman Caps}}
+
+\input Zallman.fd
+\renewcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
+
+\begin{verbatim}
+\input Zallman.fd
+\newcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
+{\initfamily TIPOGRAFIA}
+\end{verbatim}
+
+{\initfamily\Huge \tipo}
+
+\end{document}

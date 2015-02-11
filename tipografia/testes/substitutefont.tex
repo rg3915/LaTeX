@@ -1,0 +1,33 @@
+\documentclass[a4paper]{article}
+\usepackage{parskip}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{venturisold}
+\usepackage{substitutefont}
+
+% Normal
+% \substitutefont{T1}{cmr}{yvo} % Venturis ADF Old
+\renewcommand{\rmfamily}{yvo}
+
+% Sans Serif
+\substitutefont{T1}{cmss}{pzc} % Zapf Chancery
+
+% Monospaced
+\substitutefont{T1}{cmtt}{phv} % Helvetica
+
+\begin{document}
+
+\textbf{Normal}
+
+\lipsum[1]
+
+\textbf{Sans}
+
+\textsf{\lipsum[1]}
+
+\textbf{TT}
+
+\texttt{\lipsum[1]}
+
+\end{document}

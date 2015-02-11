@@ -1,0 +1,18 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{calligra}
+
+%familia
+\newcommand{\fonte}[1]{
+  \fontfamily{#1}\selectfont
+}
+
+\pagestyle{empty}
+\begin{document}
+\lipsum[1]
+
+{\fonte{calligra} \lipsum[1]}
+
+\lipsum[1]
+\end{document}

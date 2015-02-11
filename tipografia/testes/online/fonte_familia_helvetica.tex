@@ -1,0 +1,30 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=3cm]{geometry}
+
+\newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez}
+
+%familia
+\newcommand{\fonte}[2]{
+  {\fontfamily{#1}\selectfont #2}
+}
+
+\pagestyle{empty}
+\begin{document}
+
+\subsection*{Adobe Helvetica}
+{\fontfamily{phv}\selectfont
+\frase}
+
+\subsection*{Adobe Helvetica}
+{\usefont{T1}{phv}{}{}
+\frase}
+
+\subsection*{com \textbackslash newcommand}
+\fonte{phv}{
+  \frase
+}
+
+\end{document}

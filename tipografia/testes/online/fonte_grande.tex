@@ -1,0 +1,70 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{fix-cm} %para texto grande
+\usepackage{exscale} %para matematica
+\usepackage{graphicx}
+\usepackage[paperwidth=40cm,margin=2cm]{geometry}
+
+\newcommand{\frase}{Tem Coelhos que fogem de Abelhas Brigando por Jabuti porque faz chover uva e xadrez}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\section*{Textos}
+
+{\fontsize{100}{120}\selectfont Texto grande}
+
+{\fontsize{200}{120}\selectfont Texto grande}
+
+\newpage 
+
+\section*{Expressões matemáticas}
+
+\subsection*{Normal size}
+
+\[
+  \int_0^1 {\frac{\sqrt x}{2}dx}
+\]
+
+\subsection*{Huge}
+
+O pacote \texttt{exscale} corrige o tamanho de todos os itens da expressão matemática.
+
+{\Huge
+\[
+  \int_0^1 {\frac{\sqrt x}{2}dx} 
+\]
+}
+
+\subsection*{Qualquer tamanho}
+
+O pacote \texttt{graphicx} permite uma escala na expressão matemática em qualquer tamanho. Use o comando \verb|\scalebox{ }|.
+
+\verb|\scalebox{0.5}|
+
+\[
+  \scalebox{0.5}{
+    $\displaystyle\int_0^1 {\frac{\sqrt x}{2}dx}$
+  }
+\]
+
+\verb|\scalebox{1}|
+
+\[
+  \scalebox{1}{
+    $\displaystyle\int_0^1 {\frac{\sqrt x}{2}dx}$
+  }
+\]
+
+\verb|\scalebox{10}|
+
+\[
+  \scalebox{10}{
+    $\displaystyle\int_0^1 {\frac{\sqrt x}{2}dx}$
+  }
+\]
+
+\end{document}

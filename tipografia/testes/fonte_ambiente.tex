@@ -1,0 +1,24 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+\newcommand{\frase}{Tem Abelhas Bexiga Que Coelho Fugitivo fumaça Major Xadrez}
+
+\newenvironment{fonteBookman}{\fontfamily{pbk}\selectfont}{\par}
+\newenvironment{fonteChancery}{\fontfamily{pzc}\selectfont}{\par}
+
+\pagestyle{empty}
+\begin{document}
+
+\subsection*{Adobe Bookman}
+\begin{fonteBookman}
+\frase
+\end{fonteBookman}
+
+\subsection*{Adobe Zapf Chancery}
+\begin{fonteChancery}
+\frase
+\end{fonteChancery}
+
+\end{document}

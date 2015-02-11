@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+
+%familia
+\newcommand{\fonte}[1]{
+  \fontfamily{#1}\selectfont
+}
+
+\pagestyle{empty}
+\begin{document}
+\lipsum[1]
+
+{\fonte{pcr}Courier \lipsum[1]}
+
+{\fonte{ppl} Palatino \lipsum[1]}
+
+{\fonte{pzc} Chancery \lipsum[1]}
+
+{\fonte{pnc} New Century Schoolbook \lipsum[1]}
+
+{\fonte{ptm} Times Roman \lipsum[1]}
+
+{\fonte{phv} PTSansCaption \lipsum[1]}
+
+%\rmdefault
+{\fonte{fav} Arev The quick brown fox jumps over the sleazy dog}
+
+%ttdefault
+{\fonte{fvm} Arev The quick brown fox jumps over the sleazy dog}
+
+{\fonte{uaq} Antiqua The quick brown fox jumps over the sleazy dog 1 2 3 4 5 6 7 8 9 0}
+
+\lipsum[1]
+
+% {\normalfont The quick brown fox jumps over the sleazy dog}
+
+\end{document}
