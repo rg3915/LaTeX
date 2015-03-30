@@ -22,5 +22,6 @@ $ sudo rm -rf ~/.texlive2013
 Remova o texto `PATH=/usr/local/texlive/2013/bin/i386-linux:$PATH de
 gedit ~/.bashrc`
 
-image: http://2.bp.blogspot.com/-sj2fPuebqtU/U9MVwnVs5tI/AAAAAAAAA84/DBUnYtPCOto/s1600/TL1401.png
+![alt text](http://2.bp.blogspot.com/-sj2fPuebqtU/U9MVwnVs5tI/AAAAAAAAA84/DBUnYtPCOto/s1600/TL1401.png)
+
 
