@@ -1,5 +1,3 @@
-# Projeto futuro
+Comming soon ...
 
-... sem prazo definido.
-
-Por enquanto leia http://latexbr.blogspot.com.br/
+http://latexbr.blogspot.com.br/
