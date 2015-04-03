@@ -50,7 +50,9 @@ Documentos em duas colunas
 	* ajustando largura das colunas
 Bibliografia com BibTEX
 	* Bibliografia, BibTeX
-	* http://www.howtotex.com/tips-tricks/better-bibliographies-abbreviate-author-names-with-biblatex/
+	* http://www.howtotex.com/tips-tricks/better-bibliographies-abbreviate-author-names-with-biblatex/ 
+    [ARTIGO NAO ENCONTRADO] Criando eBook com LaTeX + Pandoc + ePub
+    [ARTIGO NAO ENCONTRADO] LaTeX + Markdown + txt2tags
 Indice remissivo no LaTeX
 Curso LaTeX
 Editores de equações matemáticas online
@@ -61,8 +63,7 @@ Recodificando seus arquivos ISO para UTF8
 Recortando páginas PDF com PdfCrop ou PDF-Shuffler
 Juntando páginas PDF com PdfJam
 Inserindo páginas PDF em documento LaTeX
-[ARTIGO NAO ENCONTRADO] Criando eBook com LaTeX + Pandoc + ePub
-[ARTIGO NAO ENCONTRADO] LaTeX + Markdown + txt2tags
+
 * Tutorial Beamer: criando apresentações de slides no LaTeX
 * Catálogo de cores e temas do beamer
 * Desenhando com PSTricks
