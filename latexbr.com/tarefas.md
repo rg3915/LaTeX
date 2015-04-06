@@ -64,21 +64,21 @@ Recortando páginas PDF com PdfCrop ou PDF-Shuffler
 Juntando páginas PDF com PdfJam
 Inserindo páginas PDF em documento LaTeX
 
-* Tutorial Beamer: criando apresentações de slides no LaTeX
-* Catálogo de cores e temas do beamer
-* Desenhando com PSTricks
-* Compilando figura PSTricks direto para PDF com XeLaTeX
-* Desenhando com TikZ
-* Usando node do TikZ
-* Trabalhando com posição absoluta no TikZ
-* Cores
-* Imagens em primeiro e segundo plano com TikZ
-* Criando capas personalizadas
-* Desenhando em TikZ com KTikZ
-* Curvas no TikZ
-* Desenhando no TikZ com imagens de referência (Ilustrações Vetoriais no LaTeX com TikZ)
-* Sistemas de coordenadas no TikZ
-* Medindo desenhos no TikZ
+Tutorial Beamer: criando apresentações de slides no LaTeX
+Catálogo de cores e temas do beamer
+Desenhando com PSTricks
+Compilando figura PSTricks direto para PDF com XeLaTeX
+Desenhando com TikZ
+Usando node do TikZ
+Trabalhando com posição absoluta no TikZ
+Cores
+Imagens em primeiro e segundo plano com TikZ
+Criando capas personalizadas
+Desenhando em TikZ com KTikZ
+Curvas no TikZ
+Desenhando no TikZ com imagens de referência (Ilustrações Vetoriais no LaTeX com TikZ)
+Sistemas de coordenadas no TikZ
+Medindo desenhos no TikZ
 * Inserindo figuras no LaTeX
 * Convertendo figuras para outros formatos
 * Usando figuras no LaTeX e pdfLaTeX
