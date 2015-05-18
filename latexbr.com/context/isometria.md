@@ -51,7 +51,7 @@ ponto $A' = A + v$ desse plano.
         <tr>
             <td style="text-align: center;">
                 <a href="figT1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figT1.jpg" alt="Translação determinada pelo vetor v" width="300px">
+                    <img src="../img/figT1.jpg" alt="Translação determinada pelo vetor v" width="300px">
                 </a>
             </td>
         </tr>
@@ -74,7 +74,7 @@ aplicada a um triângulo $ABC$.
         <tr>
             <td style="text-align: center;">
                 <a href="figT2.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figT2.jpg" alt="A translação $T_v$ transforma $ABC$ em $A'B'C'$" width="300px">
+                    <img src="../img/figT2.jpg" alt="A translação $T_v$ transforma $ABC$ em $A'B'C'$" width="300px">
                 </a>
             </td>
         </tr>
@@ -90,7 +90,7 @@ Em outras palavras, a translação **movimenta** uma figura.
 
 Para ilustrar a translação no TikZ vamos desenhar um [patinho][1].
 
-![Patinho](patinho2.jpg)
+![Patinho](../img/patinho2.jpg)
 
 ```latex
 \begin{tikzpicture}
@@ -123,7 +123,7 @@ Exemplo: Vamos transladar o nosso [patinho][1].
         <tr>
             <td style="text-align: center;">
                 <a href="figpatoT01.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figpatoT01.jpg" alt="Comentário sobre a translação x=3cm e y=2cm" width="300px">
+                    <img src="../img/figpatoT01.jpg" alt="Comentário sobre a translação x=3cm e y=2cm" width="300px">
                 </a>
             </td>
         </tr>
@@ -146,7 +146,7 @@ centro O e amplitude $\alpha$** é a transformação que a cada ponto $A$ do pla
         <tr>
             <td style="text-align: center;">
                 <a href="figRo1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRo1.jpg" alt="A rotação de centro O e amplitude \alpha leva A em A'." width="300px">
+                    <img src="../img/figRo1.jpg" alt="A rotação de centro O e amplitude \alpha leva A em A'." width="300px">
                 </a>
             </td>
         </tr>
@@ -175,7 +175,7 @@ Exemplo: Vamos girar o nosso [patinho][1] em $60^\circ$.
         <tr>
             <td style="text-align: center;">
                 <a href="figpatoRo1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figpatoRo1.jpg" alt="Rotação do patinho em $60^\circ$." width="300px">
+                    <img src="../img/figpatoRo1.jpg" alt="Rotação do patinho em $60^\circ$." width="300px">
                 </a>
             </td>
         </tr>
@@ -204,7 +204,7 @@ $A$ em relação a $r$.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe1.jpg" alt="O ponto A' é simétrico ao ponto A por reflexão." width="300px">
+                    <img src="../img/figRe1.jpg" alt="O ponto A' é simétrico ao ponto A por reflexão." width="300px">
                 </a>
             </td>
         </tr>
@@ -231,7 +231,7 @@ em $A'B'C'$.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe2.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe2.jpg" alt="A reflexão inverte a figura em relação a reta $r$." width="300px">
+                    <img src="../img/figRe2.jpg" alt="A reflexão inverte a figura em relação a reta $r$." width="300px">
                 </a>
             </td>
         </tr>
@@ -276,7 +276,7 @@ quadrante.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe3.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe3.jpg" alt="Ponto A' obtido por reflexão horizontal." width="300px">
+                    <img src="../img/figRe3.jpg" alt="Ponto A' obtido por reflexão horizontal." width="300px">
                 </a>
             </td>
         </tr>
@@ -305,7 +305,7 @@ Vejamos agora como fica nosso patinho após uma reflexão horizontal.
         <tr>
             <td style="text-align: center;">
                 <a href="figpatoRe1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figpatoRe1.jpg" alt="Patinho da esquerda obtido por reflexão." width="300px">
+                    <img src="../img/figpatoRe1.jpg" alt="Patinho da esquerda obtido por reflexão." width="300px">
                 </a>
             </td>
         </tr>
@@ -332,7 +332,7 @@ E finalmente, o desenho de uma cabeça.
         <tr>
             <td style="text-align: center;">
                 <a href="figcabeca.jpg" style="margin-left: auto; margin-right: auto;">
-                    Cimg src="figcabeca.jpg" alt="cabeça" width="300px">
+                    Cimg src="../img/figcabeca.jpg" alt="cabeça" width="300px">
                 </a>
             </td>
         </tr>
@@ -368,7 +368,7 @@ resulta no ponto $A'$ no quarto quadrante.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe4.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe4.jpg" alt="Ponto A' obtido por reflexão vertical." width="300px">
+                    <img src="../img/figRe4.jpg" alt="Ponto A' obtido por reflexão vertical." width="300px">
                 </a>
             </td>
         </tr>
@@ -391,7 +391,7 @@ Agora vamos colocar o patinho num lago.
         <tr>
             <td style="text-align: center;">
                 <a href="figpatoRe2.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figpatoRe2.jpg" alt="Patinho no lago." width="300px">
+                    <img src="../img/figpatoRe2.jpg" alt="Patinho no lago." width="300px">
                 </a>
             </td>
         </tr>
@@ -415,7 +415,7 @@ dada por $r: y = \alpha x$.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe5.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe5.jpg" alt="Reflexão em torno de uma reta." width="300px">
+                    <img src="../img/figRe5.jpg" alt="Reflexão em torno de uma reta." width="300px">
                 </a>
             </td>
         </tr>
@@ -443,7 +443,7 @@ interno) faz a reflexão e o primeiro (mais externo) faz a rotação.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe6.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe6.jpg" alt="legenda" width="300px">
+                    <img src="../img/figRe6.jpg" alt="legenda" width="300px">
                 </a>
             </td>
         </tr>
@@ -460,7 +460,7 @@ interno) faz a reflexão e o primeiro (mais externo) faz a rotação.
         <tr>
             <td style="text-align: center;">
                 <a href="figRe7.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figRe7.jpg" alt="legenda" width="300px">
+                    <img src="../img/figRe7.jpg" alt="legenda" width="300px">
                 </a>
             </td>
         </tr>
@@ -494,7 +494,7 @@ $\vec{OA'} = k.\vec{OA}$.
         <tr>
             <td style="text-align: center;">
                 <a href="figH1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figH1.jpg" alt="A homotetia amplia, reduz ou inverte uma figura." width="300px">
+                    <img src="../img/figH1.jpg" alt="A homotetia amplia, reduz ou inverte uma figura." width="300px">
                 </a>
             </td>
         </tr>
@@ -533,7 +533,7 @@ qualquer figura $F$ em uma figura $F'$ **semelhante** a $F$.
         <tr>
             <td style="text-align: center;">
                 <a href="figH2.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figH2.jpg" alt="$A_1 B_1 C_1$ é uma ampliação de $ABC$ e $A_2 B_2 C_2$ é uma inversão reduzida." width="300px">
+                    <img src="../img/figH2.jpg" alt="$A_1 B_1 C_1$ é uma ampliação de $ABC$ e $A_2 B_2 C_2$ é uma inversão reduzida." width="300px">
                 </a>
             </td>
         </tr>
@@ -563,7 +563,7 @@ número que amplia, reduz ou inverte a figura.
         <tr>
             <td style="text-align: center;">
                 <a href="figpatoH1.jpg" style="margin-left: auto; margin-right: auto;">
-                    <img src="figpatoH1.jpg" alt="Patinho invertido, original e ampliado." width="300px">
+                    <img src="../img/figpatoH1.jpg" alt="Patinho invertido, original e ampliado." width="300px">
                 </a>
             </td>
         </tr>
