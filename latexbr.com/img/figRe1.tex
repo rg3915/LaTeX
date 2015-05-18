@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[scale=0.75]
+\clip(-4,-3) rectangle (10,5);
+\draw[color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (1.15,1.53) -- (1.54,1.23) -- (1.83,1.63) -- (1.44,1.92) -- cycle; 
+\draw [domain=-5.97:11.73] plot(\x,{(-0--4*\x)/3});
+\draw[dashed] (-1.12,3.84)-- (4,0);
+\draw [shift={(0,0)}] plot[domain=-0.51:2.66,variable=\t]({1*4*cos(\t r)+0*4*sin(\t r)},{0*4*cos(\t r)+1*4*sin(\t r)});
+\draw [shift={(-2.46,-3.29)}] plot[domain=-0.04:1.9,variable=\t]({1*7.25*cos(\t r)+0*7.25*sin(\t r)},{0*7.25*cos(\t r)+1*7.25*sin(\t r)});
+\fill [color=blue] (4,0) circle (3pt) node[right] {$A'$};
+\fill [color=blue] (-1.12,3.84) circle (3pt) node[above] {$A$};
+\draw (3.8,4.5) node {$r$};
+\end{tikzpicture}
+\end{document}
